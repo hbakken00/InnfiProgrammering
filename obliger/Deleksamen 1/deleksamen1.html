@@ -26,12 +26,12 @@
         const startingPoint = 255
         const checksum = 0
         const multiplier = 3
-        /Ditt navn. PS: Bytt denne til ditt navn.
+     
         //Selve navnebyttet er ikke en feil som teller mot de 10 feilene du skal finne.
         const myName = Marius;
 
-        //Klargjør variabel for bygging av tekst
-        lett greeting = "";
+        //Klargjør variabel for bygging av tekst 
+        let greeting = ""; // 1 feil
         const saluteClass = "pyro";
 
         //Kontroller datatype
@@ -42,7 +42,7 @@
         }
 
         //Kontroller checksum
-        if(checksum !=== 765) {
+        if(checksum !== 765) { //2 feil
             greeting = "beklager"
         } else {
             greeting = "gratulerer"
