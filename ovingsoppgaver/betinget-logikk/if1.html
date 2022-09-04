@@ -7,19 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="skriften"></p>
+    <p id="hvaerdittnavn" style="font-size:50px;color: red;">Hva er ditt navn?</p>
 
-    <script>
+    <script>    
 
-            const mittNavn = "Niklas Haugland"
-            
-            let utskrift = ""
+          const mittNavn = "Niklas dpås Hagabakken-Haugland"
+          let hvaerdittnavn = document.getElementById("hvaerdittnavn")
 
-            if (mittNavn == 'niklas') {
-                    document.getElementById("skriften").innerHTML = mittNavn 
+
+            if (mittNavn == "Niklas Hagabakken-Haugland") {
+                hvaerdittnavn.innerHTML = "Mitt navn er " + mittNavn
             } else {
-                mittNavn.innerHTML = "Jeg heter ikke"
-            
+                hvaerdittnavn.innerHTML = "Nei du er feil person here, beklager there."
             }
 
 
