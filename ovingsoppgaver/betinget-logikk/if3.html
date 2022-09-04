@@ -8,20 +8,57 @@
 </head>
 <body>
     
-
+ <h1 id="utskrift" style="color: red;"></h1>
 
     <script>
-// lager tre variabler kalt barn1, barn2 og barn3 og gir de verdier "gutt eller jente"
+/*lager tre variabler kalt barn1, barn2 og barn3 og 
+gir de verdier "gutt eller jente" */ 
              const barn1 = "gutt"           
              const barn2 = "Jente" 
              const barn3 = "Jente" 
+            // uskrift variabel
+             let utskrift = ""
 // lager to nye variabler kaller antall_gutt og antall_jenter og gi de verdien 0
-            let antall_gutt = 0 
+            let antall_gutter = 0 
             let antall_jenter = 0
+/*if-test for første barnet 
+ Dersom det er gutt, legg til en i variabelen for gutte-telling (antall_gutter)
+ Hvis ikke, legg til en i variabelen for jentetelling */
+    if(barn1 === "gutt") {
+        antall_gutter += 1
+    }  else {
+        antall_jenter += 1
+    }      
+// if-test for det andre barnet
+if(barn2 === "gutt") {
+    antall_gutter += 1
+} else {
+    antall_jenter += 1
+}
 
-            
+// if-test for det tredje barnet
+
+if(barn3 === "gutt") {
+    antall_gutter += 1
+} else {
+    antall_jenter += 1
+}
+/*Så konkatinerer vi (kan også fordelaktig bruke template literals) 
+variabler for telling og tekst som en verdi i variabelen utskrift */
+
+utskrift = "Gutter: " + antall_gutter + ", Jenter: " + antall_jenter
+
+// og skrive ut innholdet til HTLM elementet med id utskrift
+
+document.getElementById("utskrift").innerHTML = utskrift
 
 
-    </script>
+
+
+
+
+
+
+</script>
 </body>
 </html>
