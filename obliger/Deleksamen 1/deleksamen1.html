@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innføring i Programmering: Deleksamen 1 - Feilsøking</title>
-    <link href="styles.css" rel="stylesheet" media="screen" />
+    <link href="./styles.css" rel="stylesheet" media="screen" />
 </head>
 <body>
     <h1 id="text" class="animation">Error</h1>
@@ -24,34 +24,34 @@
 
         //Klargjør variabler for utregning
         const startingPoint = 255
-        const checksum = 0
+        let checksum = 0  // feil 10 - endre variabel fra const til let 
         const multiplier = 3
-        //Ditt navn. PS: Bytt denne til ditt navn.
+        //Ditt navn. PS: Bytt denne til ditt navn. feil 1 -  kode ut meldingen
         //Selve navnebyttet er ikke en feil som teller mot de 10 feilene du skal finne.
-        const myName = "Marius";
+        const myName = "Niklas"; // feil 2 - bytte om til string siden vi kontrollerer datatype lenger ned
 
         //Klargjør variabel for bygging av tekst
-        let greeting = "";
+        let greeting = "";     // feil 3 - ta vekk èn T fra let
         const saluteClass = "pyro";
 
         //Kontroller datatype
         if(typeof myName === "string") {
-            checksummm = startingPoint * multiplier
+            checksum = startingPoint * multiplier   // feil 9 stavefeil i checksum
         } else {
             checksum = startingPoint
         }
 
         //Kontroller checksum
-        if(checksum === 765) {
+        if(checksum !== 765) { // feil 4 ta vekk ett = tegn 
             greeting = "beklager"
         } else {
             greeting = "gratulerer"
-            const output = greeting + ", " + myName + "<br />Du klarte det!";
-            const textElement = document.getElementById("text");
-            const saluteElement = document.getElementById("salute")
+            const output = greeting + ", " + myName + "<br />Du klarte det!"// feil 5 stave greeting riktig
+            const textElement = document.getElementById("text"); // feil 8 id må staves riktig
+            const saluteElement = document.getElementById("salute") // feil 6 stave getElementById riktig
             textElement.removeAttribute("class")
             textElement.innerHTML = output
-            saluteElement.setAttribute("class",saluteClass)
+            saluteElement.setAttribute("class",saluteClass)  // feil 7 stave feil ,skal være saluteClass
             document.body.setAttribute("class","success")
         }
 
