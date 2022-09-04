@@ -8,11 +8,45 @@
 </head>
 <body>
 
-
+    <p id="utskrift" style="color: red;font-size: 50px;"></p>
 
 
 
     <script>
+
+        /* deklarer to variabler for oppnådd karakter i to kurs */
+        const ITF19019_grade = "A"
+        const ITF10511_grade = "F"
+
+
+        /* deklarerer to variabler med boolianske 
+        verdier for å se om kurs er fullført 
+        den boolieanske verdien som algres i variabelen bestemmes
+        av en betingelse, skrevet med en ternart operator
+        */
+        const ITF19019_passed = ITF19019_grade === "F" ? true : false
+        const ITF10511_passed = ITF10511_grade === "F" ? true : false
+        // deklarerer en variabel for telling 
+
+        let countPassed = 0
+
+        // en iftest for å sjekke om ITF-19019 er bestått (_passed = true)
+        //Hvis den er det, skal vi oppdatere telleren i variabelen countPassed med 1
+
+        if (ITF19019_passed === true) {
+            countPassed += 1
+        }
+        // en iftest for å sjekke om det andre emnet er bestått
+        if (ITF10511_passed === true){
+            countPassed += 1
+        }
+
+        // Lager variabel med tekst som skal printes, ved bruk at template literals
+
+        const printText = `Du har bestått ${countPassed} av 2 kurs.`
+        // skriver ut teksten lagret i variabelen printText til htmlelementet med id uskrift
+
+        document.getElementById("utskrift").innerHTML = printText
 
 
 
