@@ -20,34 +20,34 @@
         "Rotte",
         "Fugl",
         "Hund",
-        "Gris"
-      ]
-         /* legger til 2 verdier til i arrayen ved å bruke .splice() metoden
+        "Gris",
+      ];
+      /* legger til 2 verdier til i arrayen ved å bruke .splice() metoden
          3 parametere, hviilken index den skal legge seg, hvor mange indexer skal fjernes
          og verdiene som skal addes */
-       
-         dyr.splice(10, 0, "Giraff","Flue")
-       
-         /*sorterer arrayen alfabetisk med .sort() metoden*/
-      
-         dyr.sort()
 
-         /*Lager en variabel antallDyr som 
+      dyr.splice(10, 0, "Giraff", "Flue");
+
+      /*sorterer arrayen alfabetisk med .sort() metoden*/
+
+      dyr.sort();
+
+      /*Lager en variabel antallDyr som 
          inneholder hvor mange dyr det er i arrayen 
          ved hjelp av operatoren length. */
-      
-        let antallDyr = dyr.length
 
+      let antallDyr = dyr.length;
 
+      /*Skriver ut til html element (ID setning) med template literals ${} og gir de markeringer med .join("<>") */
+      let tekst = `Dyrene i arrayen sortert: ${dyr.join(" <> ")}
+         Og antall dyr i listen er: ${antallDyr}`;
 
+      /* manipulerer HTML elementet med id "setning" og 
+         skriver ut variabelen tekst som inneholder string med tekst 
+         og template literals ${} med dyr og antall dyr med .lenght
+         */
 
-        /*Skriver ut til html element (ID setning) med template literals ${} og gir de markeringer med .join("<>") */
-        let tekst = (`Dyrene i arrayen sortert: ${dyr.join(" <> ")}
-         Og antall dyr i listen er: ${antallDyr}`)
-         
-         document.getElementById("setning").innerHTML = tekst
-
-         
+      document.getElementById("setning").innerHTML = tekst;
     </script>
   </body>
 </html>
