@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Innføring i Programmering: Deleksamen 1 - Feilsøking</title>
     <link href="./styles.css" rel="stylesheet" media="screen" />
 </head>
+
 <body>
     <h1 id="text" class="animation">Error</h1>
     <div id="salute">
@@ -35,14 +37,14 @@
         const saluteClass = "pyro";
 
         //Kontroller datatype
-        if(typeof myName === "string") {
+        if (typeof myName === "string") {
             checksum = startingPoint * multiplier   // feil 9 stavefeil i checksum
         } else {
             checksum = startingPoint
         }
 
         //Kontroller checksum
-        if(checksum !== 765) { // feil 4 ta vekk ett = tegn 
+        if (checksum !== 765) { // feil 4 ta vekk ett = tegn 
             greeting = "beklager"
         } else {
             greeting = "gratulerer"
@@ -51,14 +53,15 @@
             const saluteElement = document.getElementById("salute") // feil 6 stave getElementById riktig
             textElement.removeAttribute("class")
             textElement.innerHTML = output
-            saluteElement.setAttribute("class",saluteClass)  // feil 7 stave feil ,skal være saluteClass
-            document.body.setAttribute("class","success")
+            saluteElement.setAttribute("class", saluteClass)  // feil 7 stave feil ,skal være saluteClass
+            document.body.setAttribute("class", "success")
         }
 
         /*
          * IKKE ENDRE NOE ETTER DENNE KOMMENTAREN
          */
-        
+
     </script>
 </body>
+
 </html>
