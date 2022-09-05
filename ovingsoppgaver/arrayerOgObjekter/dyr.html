@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Liste over forskjellige dyr</title>
-</head>
-<body>
-
+  </head>
+  <body>
+    <p id="utskrift"></p>
     <script>
-
-
-
-
+        // lager array med 10 forskjellige dyr
+        let dyr = [
+            "Ku",
+            "Geit",
+            "Sau",
+            "Apekatt",
+            "Nesehorn",
+            "Katt",
+            "Rotte",
+            "Fugl",
+            "Hund",
+            "Gris",
+        ];
+        // lager / deklarerer / gjør klar variabel til utskrift med index 3 og 7 i array
+        let utskrift = `Her er det listet opp noen dyr, for eksempel: ${dyr[3]} og ${dyr[7]}. Andre dyr kan være 
+          ${dyr[6]}, ${dyr[8]} eller ${dyr[4]}`;
+        // her trenger du ikke gåseøyne for tekst, når det ligger inni omvendt-fnutter. trenger heller ikke +
+        // skriver ut til html ID
+        document.getElementById("utskrift").innerHTML = utskrift;
     </script>
-</body>
+  </body>
+</html>
