@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>animals</title>
+  </head>
+  <body>
+    <div id="setning"></div>
+    <script>
+      // lager array med 10 forskjellige dyr
+      let dyr = [
+        "Ku",
+        "Geit",
+        "Sau",
+        "Apekatt",
+        "Nesehorn",
+        "Katt",
+        "Rotte",
+        "Fugl",
+        "Hund",
+        "Gris"
+      ]
+         /* legger til 2 verdier til i arrayen ved å bruke .splice() metoden
+         3 parametere, hviilken index den skal legge seg, hvor mange indexer skal fjernes
+         og verdiene som skal addes */
+       
+         dyr.splice(10, 0, "Giraff","Flue")
+       
+         /*sorterer arrayen alfabetisk med .sort() metoden*/
+      
+         dyr.sort()
+
+         /*Lager en variabel antallDyr som 
+         inneholder hvor mange dyr det er i arrayen 
+         ved hjelp av operatoren length. */
+      
+        let antallDyr = dyr.length
+
+
+
+
+        /*Skriver ut til html element (ID setning) med template literals ${} og gir de markeringer med .join("<>") */
+        let tekst = (`Dyrene i arrayen sortert: ${dyr.join(" <> ")}
+         Og antall dyr i listen er: ${antallDyr}`)
+         
+         document.getElementById("setning").innerHTML = tekst
+
+         
+    </script>
+  </body>
+</html>
