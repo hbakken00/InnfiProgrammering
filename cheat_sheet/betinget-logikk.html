@@ -10,6 +10,16 @@
 
     <h1>Er du myndig?</h1>
     <p style="color: red;font-size:x-large;" id="myndig-utskrift"></p>
+   
+   
+    <h2>Har fått tilgang:</h2>
+    <p style="color: blue;font-size:x-large;" id="tilgang-utskrift"></p>
+
+
+    <h2>Er vi igang?</h2>
+    <div style="color: green;font-size:x-large;" id="igang-utskrift"></div>
+
+
     <script>
 
         const age = 29 
@@ -22,6 +32,46 @@
         } else {
             document.getElementById("myndig-utskrift").innerHTML = "Du er ikke myndig"
         }
+
+
+        // tilgangsjekk ::
+        const te = document.getElementById("tilgang-utskrift")
+        const userInput = 1234
+
+        if( userInput === 1234){
+            document.getElementById("tilgang-utskrift").innerHTML = "Du har tilgang"
+        } else if (userInput === 1235) {
+            te.innerHTML = "Du har tilgang"
+        } else if( userInput === 333){
+            te.innerHTML = "Du har tilgang"
+        } else {
+            te.innerHTML = "Avvist"
+        }
+
+
+            /* med tenerary operators 
+        if(userInput === 1234 || userInput === 4321 || userInput === 3333)
+        */
+
+        // igang-sjekk ::
+        const iGangDiv = document.getElementById("igang-utskrift")
+        const time = 6 
+       
+       
+       
+        const awake = time >= 6 ? true : false 
+        
+        /*  Linjen over betyr det samme som : 
+        let awake = false; 
+        if (time = > 6) {
+            awake = true
+        } else {
+            awake = false
+        }
+       */ 
+        iGangDiv.innerHTML =`<p class="${awake ? "class-awake" : "class-sleep"}">${awake ? "Du er våken" : "Du sover"}</p>`
+
+
 
     </script>
 
