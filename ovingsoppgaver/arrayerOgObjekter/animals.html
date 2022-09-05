@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>animals</title>
-</head>
-<body>
-    
-
+  </head>
+  <body>
+    <div id="setning"></div>
     <script>
+      // lager array med 10 forskjellige dyr
+      let dyr = [
+        "Ku",
+        "Geit",
+        "Sau",
+        "Apekatt",
+        "Nesehorn",
+        "Katt",
+        "Rotte",
+        "Fugl",
+        "Hund",
+        "Gris"
+      ];
 
-        
+     let animals = [
+        "Cow",
+        "Goat",
+        "Sheep",
+        "Monkey",
+        "Rhino",
+        "Cat",
+        "Rat",
+        "Bird",
+        "Dog",
+        "Pig"
+     ]   
+
+     let tekst = `${dyr[3]} er et dyr. Det heter ${animals[3]} på engelsk. ${dyr[5]} er også et dyr.
+     det heter selvsagt ${animals[5]} på engelsk`
+
+        document.getElementById('setning').innerHTML = tekst 
+
+
+
 
     </script>
-
-
-</body>
+  </body>
 </html>
