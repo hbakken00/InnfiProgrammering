@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>years</title>
+</head>
+
+<ul id="events"></ul>
+
+<body>
+    <script>
+        // lager en variabel som inneholder en indexert array med årstall
+        let years = [
+            1066,
+            1564,
+            1455,
+            1346,
+            1215
+        ]
+
+        // bruker metoden .sort() med en funksjon inni for å sortere omvent fra b til a 
+        years.sort(function(a, b){return b - a});
+       
+       // denne sorterer kronologisk fra a til b
+       /* years.sort(function(a, b){return a - b}) */ 
+       
+       
+        console.log(years)
+
+        let eventHTML = ""
+
+        /* bruker metoden .map() med arrowfunksjon inni parantesene 
+        og legger itl en template literal som består av html-koden for liste-elementene 
+        og mellom liste-elementenene skriver vi ut det som er lagret i variabelen item */
+        years.map(
+            (item) => {
+                eventHTML += `Årstallet er: <li>${item}</li>`}
+        )
+        /* skriver ut til HTML elementet med id eventHTML
+        med HTML lagret i eventHTML i .map() metoden med funksjon over */
+
+        document.getElementById("events").innerHTML = eventHTML
+    </script>
+</body>
+</html>
