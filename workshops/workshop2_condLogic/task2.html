@@ -14,11 +14,12 @@
             <div id="coins"><img src="img/coins.png" /> <span id="coins-count">0</span></div>
             <div id="player">
                 <img src="img/person.png" />
-                <span id="playername">Marius</span>
+                <span id="playername"></span>
             </div>
             <div id="points"><img src="img/points.png" /> <span id="points-count">0</span></div>
             <!-- Oppgave 6: opprettet HTML-struktur for å skrive ut level -->
             <div id="level">Level: <span id="level-count">0</span></div>
+            <div id="collect-coins-utskrift"></div>
         </section>
         <aside id="hud-inventory">
             <h3>Armory</h3>
@@ -45,19 +46,19 @@
 
     <script>
         //Oppgave 1: Spillernavn
-        const playerName = "Hiof"
+        const playerName = "Spiller: Niklas"
         document.getElementById("playername").innerHTML = playerName
         //Oppgave 2: Penger
-        let coins = 15
+        let coins = 2
         document.getElementById("coins-count").innerHTML = coins
         //Oppgave 3: Liv
-        let lives = 5
+        let lives = 1
         document.getElementById("lives-count").innerHTML = lives
         //Oppgave 4: Våpen-nivåer:
-        let longsword = 1
-        let warhammer = 4
-        let battleaxe = 2
-        let armour = 3
+        let longsword = 10
+        let warhammer = 0
+        let battleaxe = 11
+        let armour = 0
         document.getElementById("weapon-longsword").innerHTML = longsword
         document.getElementById("weapon-warhammer").innerHTML = warhammer
         document.getElementById("weapon-battleaxe").innerHTML = battleaxe
@@ -68,6 +69,76 @@
         //Oppgave 6: Utskrift av level
         let level = 1
         document.getElementById("level-count").innerHTML = level
+
+        // Workshop 2 (oppgave 1)
+
+        // lager if-test for å sjekke om antall coins er lik eller større enn null, hvis betingelsen ikke stemmer skriv ut vanlig variabel uten endring.
+        if(coins <= 0) {
+            document.getElementById("coins-count").innerHTML = "Collect some coins!"
+        } else {
+            coins.innerHTML = coins 
+        }
+        // Workshop 2 (oppgave 2)
+        // lager if-tester for å sjekke om level på våpen er lik eller større en 10, hvis betingelsen ikke stemmer, ikke gjør noe.
+        if(longsword >= 10){
+            document.getElementById("weapon-longsword").style.color = "#ffbf00" 
+        } else {
+            null
+        }
+        if(warhammer >= 10){
+            document.getElementById("weapon-warhammer").style.color = "#ffbf00"
+        } else {
+            null
+        }
+
+        if(battleaxe >= 10){
+            document.getElementById("weapon-battleaxe").style.color = "#ffbf00"
+        } else {
+            null
+        }
+        
+        if(armour >= 10){
+            document.getElementById("weapon-armour").style.color = "#ffbf00"
+        } else {
+            null
+        }
+
+        // Workshop 2 (Oppgave 3)
+        // lager en if test for å sjekke om vi kun har 1 liv igjen 
+
+        if(lives === 1){
+            document.getElementById("lives-count").style.color = "red"
+        } else {
+            null
+        }
+
+        /*Lag betinget logikk som sjekker hver våpen i armory om level er 0 (hvis level er null, har de ikke fått dette våpenet enda). 
+        Hvis level er 0, skal ikke denne raden med våpen skrives ut. Hint: Tabellradene som skriver ut hvert våpen i armory ligger mellom <tr> og </tr>. 
+        Her må HTML flyttes fra HTML-delen til JavaScript-delen, og man må lage en tekststreng som konkatinerer HTML-kode,
+        tekst og variabler som skrives ut først når man får tak i våpenet (level 1).*/
+       
+       
+        if(longsword === 0){
+                document.getElementById("weapon-longsword").innerHTML = "Du har ikke fått dette våpenet enda!"
+        } 
+       
+        if(warhammer === 0){
+                document.getElementById("weapon-warhammer").innerHTML = "Du har ikke fått dette våpenet enda!"
+        }
+      
+        if(battleaxe === 0){
+                document.getElementById("weapon-battleaxe").innerHTML = "Du har ikke fått dette våpenet enda!"
+        }
+       
+        if(armour === 0){
+                document.getElementById("weapon-armour").innerHTML = "Du har ikke fått rustning enda!"
+        }
+
+        // koden over kan skrives bedre
+
+    
+
+
     </script>
 </body>
 </html>
