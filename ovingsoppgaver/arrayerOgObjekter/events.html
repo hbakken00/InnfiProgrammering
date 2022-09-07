@@ -8,22 +8,38 @@
 </head>
 <body>
 
-    <ul id="events"></ul>
+    <ul id="ut"></ul>
 
 
 
-    <script>
+    <script>    
+
+    // lager array med objekter med 2 nøkkelverdier inni year og event
 
         let events = [
-             {year: 1969, even: "blabla"},
-             {year: 1969, even: "blabla"},
-             {year: 1969, even: "blabla"},
-             {year: 1969, even: "blabla"},
-             {year: 1969, even: "blabla"},
+             {year: 1969, event: "The creation of ARPANET"},
+             {year: 1971, event: "The first email is sent"},
+             {year: 1981, event: "IBM launches a PC"},
+             {year: 1990, event: "Tim Berners Lee launches the first website"},
+             {year: 1998, event: "Google was founded"},
 
         ]
 
+        // variabel for utskrift med tom string
+        let eventLitstHTML = ""
 
-    </script>
+        /* Bruker metoden .map() for å gå gjennom arrayen med objekter. 
+        for hver rad i arrayen, bruker vi template literals for å bygge liste HTML-struktur med ``*/
+        
+            events.map(
+                (detviskalmappe) => {
+                    eventLitstHTML += `Liste over events: <li>${detviskalmappe.year}: ${detviskalmappe.event}`
+                }
+            )
+
+                document.getElementById("ut").innerHTML = eventLitstHTML
+
+
+</script>
 </body>
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spread</title>
+</head>
+<body>
+<div id="ut"></div>
+
+<script>
+ // lager array
+        const animals = [
+            "cat",
+            "dog",
+            "penguin",
+            "horse",
+            "cow"
+        ]
+        // spread er trippel punktum (... etterfulgt av variabelnavn)
+    console.log(...animals)
+
+    // lager to forskjellige arrays
+    const scandinavianAnimals = [
+        "Hawk",
+        "Lynx",
+        "Wolf",
+        "Boar"
+    ]
+    const africanAnimals = [
+        "Lion",
+        "Elephant",
+        "Rhino"
+    ]
+    //lager ny variabel og sammenkobler array'sa med spread(...) til èn array
+
+    const allAnimals = [
+        ...scandinavianAnimals,
+        ...africanAnimals
+    ]
+    console.log(allAnimals)
+// skriver ut til html ID "ut" med .join("") metoden for å skille listen bedre
+    document.getElementById("ut").innerHTML = allAnimals.join("<-->")
+
+
+
+    // det samme kan vi gjøre hvis vi vil slå sammen objekter 
+    // lager 2 objekter med forskjellige variabler(verdier)
+        const personInfo = {
+            firstName: "Niklas",
+            lastName: "Hagabakken-Haugland",
+            email: "nikhaug@outlook.com"
+        }
+        const contactInfo = {
+            office: "Korterødveien 1 bygg 2",
+            email: "niklasha@hiof.no"
+        }
+
+    //slår sammen objektene ved å speade eksisterende array rad til en ny en(legge til en )
+
+    const personRegister ={
+        ...personInfo,
+        ...contactInfo
+    }
+    console.log(personRegister)
+
+    // duplisere
+    const dupliserePersonInfo = {
+        ...personInfo
+    }
+    console.log(dupliserePersonInfo)
+
+
+    const animals2 = [
+        "Horse",
+        "Cow",
+        "Cat",
+        "Dog"
+    ]
+    const spliceParametere = [2, 0, "Sheep"]
+
+    animals2.splice(...spliceParametere)
+    console.log(animals2)
+
+</script>
+
+
+    
+</body>
+</html>
