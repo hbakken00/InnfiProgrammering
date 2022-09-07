@@ -7,8 +7,8 @@
     <title>jsoving</title>
 </head>
 <body>
-
-
+    <h2>Teller:</h2>
+    <ul id="telleren"></ul>
 
     <script>
             
@@ -21,13 +21,26 @@
             for(start, stopp, utregning) {
             her kjører vi kode for hver runde løkken kjører }
         */
+         /*   for(let teller = 0; teller <= 5; teller++) {
+                  console.log(teller)
+             }  
+        /* Hvis vi nå ønsker å lage en liste basert på eksempelkoden fra tidligere, 
+           som ikke skriver ut tallene i en liste, 
+           kan vi gjøre det ved å legge til litt mer kode:
+        */
+        let utskrift = ""
+       
+        //utskrift, for å kunne legge den inn i <ul></ul> når loopen er ferdig.
 
+        for(let startTall = 0; startTall <= 10; startTall++) {
+            utskrift += `<li>${startTall}</li>`
+        }   
 
-        for(let teller = 0; teller <= 5; teller++) {
-            console.log(teller)
-        }
+        // skriv ut listelementene i <ul> taggen
 
-        
+            document.getElementById("telleren").innerHTML = utskrift
+           
+
 
 
     </script>
