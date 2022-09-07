@@ -11,7 +11,8 @@ const user = {
   
         // lager funksjon inne i objektet, kaller den for sayName og console.logger this
   sayName: function () {
-    console.log(this);
+    // THIS refererer til navnet på objektet og blir ikke definert før vi kjører funksjonen sayName()
+    console.log(this.name);
   },
 };
 
