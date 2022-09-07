@@ -11,7 +11,8 @@ const user = {
   
   // lager funksjon inne i objektet, kaller den for sayName og console.logger this
   sayName: function () {
-    // THIS refererer vanligvis til windows defualt men kan brukes som et "oppslagsverk" eller "finder" i et objekt med flere variabler med this.navnet på variabelen i objektet.
+    // THIS refererer vanligvis til window objektet av defualt men kan brukes som et "oppslagsverk" eller "finder" i et objekt med flere variabler med this.navnet på variabelen i objektet.
+    // THIS tips: Se til venstre for hvor du invoker (kjører) funksjonen, så ser du hva THIS refererer til
     // THIS refererer til navnet på objektet og blir ikke definert før vi kjører funksjonen sayName()
     console.log(this.name);
   },
