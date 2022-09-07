@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>countdown</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <ul id="nedtelling"></ul>
+
+    <script>
+        // lager variabel med tom tekst streng
+
+
+      let htmlString = "";
+
+
+      //  for-loop som starter på 10, teller som lenge "teller" er større
+      // eller er lik 0, oig trejjer fra en for hver runde løkken går:
+      
+      for (let teller = 10; teller >= 0; teller--) {
+        htmlString = `<li>${
+          teller === 0 ? "We have take of baby" : teller
+        } </li>`;
+      }
+
+                /* Oppgaven kan også løses med en if/else-test:
+                if(teller === 0) {
+                    htmlString += `<li>We have take-off</li>`
+                } else {
+                    htmlString += `<li>${teller}</li>`
+                }   
+               */
+
+       // Skriver ut til html id "nedtelling"        
+      document.getElementById("nedtelling").innerHTML = htmlString;
+    </script>
+  </body>
 </html>
