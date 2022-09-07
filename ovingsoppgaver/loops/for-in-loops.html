@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="utskrift"></div>
+    <script>        
+
+        // lage objekt
+        const person = {
+            firstName: "Marius",
+            lastName: "Akerbæk",
+            age: 39
+        }
+        // bruke for-in-loop for å hente verdier (variabler) fra objektet
+
+        for (let key in person){
+            console.log(`${key} : ${person[key]}`)
+        }
+
+        /* I koden ser vi syntaxen for(let key in object). 
+        Denne starter en løkke som går gjennom alle nøklene i objectet, og lagrer disse i key. 
+        Da kan vi bruke referansestien object[key] for å hente verdiene lagret under nøkkelen i objektet mens løkken går, 
+        og kun key som en referanse til selve nøkkelnavnet. */
+
+    </script>
+</body>
+</html>

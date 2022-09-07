@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>forEach-loops</title>
+  </head>
+  <body>
+    <h2 id="ut">forEach-loops</h2>
+
+    <script>
+      /*forEach-løkker brukes for å kalle på hver element i en array. 
+        I moderne JavaScript brukes denne nesten aldri, fordi .map() er en bedre løsning.
+        På samme måte som .map(), må .forEach() kjøre en funksjon med en parameter for å lagre verdien i raden i arrayen.
+        Bruksområdene er ellers mer eller mindre de samme.
+        .forEach() returnerer ingenting annet enn det funksjonen vi sender med forEach()-kallet eventuelt returnerer. Den fungerer derfor greit til for eksempel å gjøre en matematisk utregning av tallene i en array når vi har behov for dette. Det kan eksempel være utregningen av poeng i et spill, hvis disse poengene ligger i en egen liste.
+        .map() returnerer en ny array med de modifikasjoner og endringer vi har gjort gjennom funksjonen vi sender med .map()-kallet.
+        Dette er typisk grunnen til å bruke .map(), fordi vi trenger den manipulerte arrayen videre i koden.
+        Se tydelige eksempler fra TutsPlus: https://code.tutsplus.com/tutorials/javascript-map-vs-foreach-when-to-use-each-one--cms-38365
+         */
+         // syntax
+        // variabel for total sum
+         let total = 0 
+        // lager array med tall
+         const numbers = [
+            7,
+            3,
+            12,
+            8
+         ]
+    
+         // forEach hvert tall i arrayen med tall, add til total
+         numbers.forEach((item) => total += item)
+   
+   
+         // utskrift av total til en id
+        document.getElementById("ut").innerHTML = total
+
+    </script>
+  </body>
+</html>
