@@ -7,6 +7,29 @@
     <title>Liste over dyr</title>
 </head>
 <body>
+    <ul id="animals"></ul>
     
+    <script>
+        //Lage klar en array:
+        const animals = ["Horse", "Cat", "Dog", "Sheep", "Squirrel", "Unicorn", "Weasel", "Panda", "Fox"]
+        // lage klar en tom tekstreng
+        let htmlString = ""
+        //Kjøre for-løkke med counter som starter på 0 (samme som første index i arrayen), 
+        //går så lenge counter er mindre enn lengden på animals-arrayen,
+        //og legger 1 til counter for hver runde løkken kjører
+        
+        for(let counter = 0;counter < animals.length; counter++) {
+            // bygger htmlString ved å refere til animals[index] for hver runde løkken kjører 
+            // index er tallet i counter-telleren:
+            htmlString += `<li>${animals[counter]}` 
+        } 
+
+        // så skriver vi ut htmlString til <ul>'n med id "animals"
+
+            document.getElementById("animals").innerHTML = htmlString
+
+
+
+    </script>
 </body>
 </html>
