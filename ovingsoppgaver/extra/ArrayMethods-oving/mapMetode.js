@@ -23,6 +23,8 @@ shoppinglist.map(
     }
 )
 
+
+
 // skriver ut til ID shoppinglist 
 
 document.getElementById("shoppingList").innerHTML = printout
