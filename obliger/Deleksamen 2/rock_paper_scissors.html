@@ -127,12 +127,12 @@
     <section id="gamearea">
         <div id="playerSigns">
             <h2 id="instruction">Play your hand:<span id="choice"></span></h2>
-            <button type="button" onClick="playy('rock')" id="rockButton" class="playerChoice"><img src="rock.jpg" alt="Rock" /></button>
+            <button type="button" onClick="play('rock')" id="rockButton" class="playerChoice"><img src="rock.jpg" alt="Rock" /></button>  
             <button type="button" onClick="play('paper')" id="paperButton" class="playerChoice"><img src="paper.jpg" alt="Paper" /></button>
             <button type="button" onClick="play('scissors')" id="scissorsButton" class="playerChoice"><img src="scissors.jpg" alt="Scissors" /></button>
         </div>
         <div id="selection">
-            <!-- HTML element to show player selection -->
+            <!-- HTML element to show player selection  2 feil over skal være play, ikke playy--> 
         </div>
         <div id="computer">
             <!-- HTML element to show computer selection -->
@@ -162,7 +162,7 @@
          * On mouseover, show the alt-text of the image inside the button and add animation class
          * On mouseout, remove the text and class
          */
-        buttonss.forEach(button => {
+        buttons.forEach(button => { // 1 feil kodet ut èn s for mye i buttons
             button.addEventListener("mouseover", (event) => {
                 document.getElementById("choice").innerHTML = button.childNodes[0].alt
                 document.getElementById("choice").setAttribute("class","choiceAnimate")
@@ -203,11 +203,13 @@
             //Lets write the computer selection to the console to make sure we have a valid hit:
             console.log("Computer selected: " + computerSign)
             // Good! Now we also have to show this on the website, by making #computer visible and filling it with HTML:
-            const computer = document.getElementByID("computer")
+            const computer = document.getElementById("computer") // 3 feil stave getElementById riktig
             
             computer.style.display = "block"
             /* OPPGAVE 2.1: FORKLAR HVA SOM SKJER PÅ LINJE 208
-             * _ditt svar her_  displayer elementet computer som block i css
+             * her tar vi variabelen computer som vi deklarerer i linje 206 og 
+               setter er lik elementet med ID computer i html som d
+               displayer elementet computer som block i css dvs at elementet tar opp gitt width og height
              */
 
             computer.innerHTML = "Computer selects " + computerSign
@@ -250,18 +252,37 @@
             //Now you know the drill: show #winner by display: block and fill it with HTML:
             const winnerDiv = document.getElementById("winner")
             winnerDiv.style.display = "block"
+            // oppgave 5
+            if(winner == "player"){
+                winnerDiv.innerHTML = `You win`
+            } else if (winner == "computer"){
+                winnerDiv.innerHTML = `You loose`
+            } else {
+                winnerDiv.innerHTML = `It's a tie`
+            }
 
-            winnerDiv.innerHTML = "The winner is " + winner
+          /*  winnerDiv.innerHTML = "The winner is " + winner  kodet ut linje til fordel for koden over oppgave 5*/ 
             /* OPPGAVE 2.2: FORKLAR HVA SOM SKJER PÅ LINJE 254
-             * _ditt svar her_ 
+             * variabelen winnderDiv som deklareres på linje 253 over
+               settes er lik elementet med ID winner i html som
+               displayer elementet winner som block i css dvs at elementet tar opp satt width og height
              */
+            // oppgave 3
+             if(winner == "player") {
+            document.getElementById("winner").style.backgroundColor = "#FFD700"
+            } else {
+            document.getElementById("winner").style.backgroundColor = "#4b4737"
+            }
 
             //Now, lastly, let's update the counter on how many games we have played:
             counter = counter + 1
-
+            // oppgave 4
             document.getElementById("counter").innerHTML = counter
+            if(counter + 1){
+                document.getElementById("counter").style.color = "red"
+            }
             /* OPPGAVE 2.3: FORKLAR HVA SOM SKJER PÅ LINJE 262
-             * _ditt svar her_ 
+            variabelen counter blir plusset på med 1 hvor hver gang spillet er spillt 
              */
 
             //And display the button for playing again:
