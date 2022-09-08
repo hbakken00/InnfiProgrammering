@@ -55,10 +55,10 @@
         let lives = 1
         document.getElementById("lives-count").innerHTML = lives
         //Oppgave 4: Våpen-nivåer:
-        let longsword = 10
-        let warhammer = 0
-        let battleaxe = 11
-        let armour = 0
+        let longsword = 20
+        let warhammer = 20
+        let battleaxe = 20
+        let armour = 20
         document.getElementById("weapon-longsword").innerHTML = longsword
         document.getElementById("weapon-warhammer").innerHTML = warhammer
         document.getElementById("weapon-battleaxe").innerHTML = battleaxe
@@ -108,9 +108,7 @@
 
         if(lives === 1){
             document.getElementById("lives-count").style.color = "red"
-        } else {
-            null
-        }
+        } 
 
         /*Lag betinget logikk som sjekker hver våpen i armory om level er 0 (hvis level er null, har de ikke fått dette våpenet enda). 
         Hvis level er 0, skal ikke denne raden med våpen skrives ut. Hint: Tabellradene som skriver ut hvert våpen i armory ligger mellom <tr> og </tr>. 
@@ -118,24 +116,11 @@
         tekst og variabler som skrives ut først når man får tak i våpenet (level 1).*/
        
        
-        if(longsword === 0){
-                document.getElementById("weapon-longsword").innerHTML = "Du har ikke fått dette våpenet enda!"
-        } 
-       
-        if(warhammer === 0){
-                document.getElementById("weapon-warhammer").innerHTML = "Du har ikke fått dette våpenet enda!"
-        }
-      
-        if(battleaxe === 0){
-                document.getElementById("weapon-battleaxe").innerHTML = "Du har ikke fått dette våpenet enda!"
-        }
-       
-        if(armour === 0){
-                document.getElementById("weapon-armour").innerHTML = "Du har ikke fått rustning enda!"
-        }
+        
 
-        // koden over kan skrives bedre
 
+
+    
     
 
 
