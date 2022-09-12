@@ -24,20 +24,14 @@
         console.log(handleListe)
         // hente størrelsen (antall elementer i arrayen ) i en array
         const antallVarer = handleListe.length
-
-
-            // skrive ut et bestemt element fra handlelisten
         console.log("Handlelisten inneholder " + antallVarer + "varer")
+
+        // skrive ut et bestemt element fra handlelisten
         const vare2 = handleListe[1]
-        console.log("varen på rad 2 i handlelisten er:" + handleListe[1])
-
-        const vare3 = handleListe [2]
-
-        console.log("Varen på index 2 i handlelisten er:" + handleListe[2] + " men den er nummer 3 i listen")
+        console.log("Varen på rad 2 i handlelisten er " + vare2)
         
         // skrive ut et bestemt element med dynamisk index innbakt i variabel vi lagrer som const = index
-
-        const index = 4
+        const index = 2
         // setter indexVare er lik hver indeks i handlelisten
         const indexVare = handleListe[index]
         console.log(`Varen på rad : ${index + 1} i handleListe er ${indexVare}`)
@@ -58,7 +52,7 @@
         // hvis vi ønsker å legge til 1 rad i starten av arrayen 
         handleListe.unshift("Sprøstekt løk")
         console.log(handleListe)
-            
+
 
 </script>
 </body>
