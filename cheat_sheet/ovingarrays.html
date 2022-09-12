@@ -25,6 +25,8 @@
         // hente størrelsen (antall elementer i arrayen ) i en array
         const antallVarer = handleListe.length
 
+
+            // skrive ut et bestemt element fra handlelisten
         console.log("Handlelisten inneholder " + antallVarer + "varer")
         const vare2 = handleListe[1]
         console.log("varen på rad 2 i handlelisten er:" + handleListe[1])
@@ -34,11 +36,29 @@
         console.log("Varen på index 2 i handlelisten er:" + handleListe[2] + " men den er nummer 3 i listen")
         
         // skrive ut et bestemt element med dynamisk index innbakt i variabel vi lagrer som const = index
-        
-        const index = 4
-        const indexVare = handleListe[index]
-        console.log(`Varen på rad : ${index + 1} i handlelsiten er ${indexVare} `)    
 
+        const index = 4
+        // setter indexVare er lik hver indeks i handlelisten
+        const indexVare = handleListe[index]
+        console.log(`Varen på rad : ${index + 1} i handleListe er ${indexVare}`)
+
+        // sortere listen alfabetisk 
+        handleListe.sort()
+        // sorterer arrayen opp ned
+        handleListe.reverse()
+        // skriver ut til consollen MERK: INDEXENE FORANDRES IKKE, KUN ALFABETISK UTSKRIFT I LISTEN!
+        
+        console.log(handleListe)
+      
+        // legge til på arrayen med metoden .push()
+        handleListe.push("Pølsebrød", "Ketshup")  
+        console.log(handleListe)
+        // SORTERING ER CASE SENSETIVT. store bokstaver prioriteres og små etter reversering.
+
+        // hvis vi ønsker å legge til 1 rad i starten av arrayen 
+        handleListe.unshift("Sprøstekt løk")
+        console.log(handleListe)
+            
 
 </script>
 </body>
