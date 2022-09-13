@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Workshop 1: Variabler</title>
-    <link href="task2.css" rel="stylesheet" media="all">
-</head>
-<body>
+    <link href="task3.css" rel="stylesheet" media="all" />
+  </head>
+  <body>
     <div id="gamearea">
-        <section id="hud-top">
-            <div id="lives"><img src="img/potions.png" /> <span id="lives-count">0</span></div>
-            <div id="coins"><img src="img/coins.png" /> <span id="coins-count">0</span></div>
-            <div id="player">
-                <img src="img/person.png" />
-                <span id="playername"></span>
-            </div>
-            <div id="points"><img src="img/points.png" /> <span id="points-count">0</span></div>
-            <!-- Oppgave 6: opprettet HTML-struktur for å skrive ut level -->
-            <div id="level">Level: <span id="level-count">0</span></div>
-            <div id="collect-coins-utskrift"></div>
-        </section>
-        <aside id="hud-inventory">
-            <h3>Armory</h3>
-            <table id="showhide">
-                    <!-- 
+      <section id="hud-top">
+        <div id="lives">
+          <img src="img/potions.png" /> <span id="lives-count">0</span>
+        </div>
+        <div id="coins">
+          <img src="img/coins.png" /> <span id="coins-count">0</span>
+        </div>
+        <div id="player">
+          <img src="img/person.png" />
+          <span id="playername"></span>
+        </div>
+        <div id="points">
+          <img src="img/points.png" /> <span id="points-count">0</span>
+        </div>
+        <!-- Oppgave 6: opprettet HTML-struktur for å skrive ut level -->
+        <div id="level">Level: <span id="level-count">0</span></div>
+        <div id="collect-coins-utskrift"></div>
+      </section>
+      <aside id="hud-inventory">
+        <h3>Armory</h3>
+        <table id="showhide">
+          <!-- 
                 <tr>
                     <td><img src="img/longsword.png"></td>
                     <td>Level: <span id="weapon-longsword"></span></td>
@@ -43,54 +49,90 @@
                     <td>Level: <span id="weapon-armour"></span></td>
                 </tr>
                 -->
-            </table>
-        </aside>
+        </table>
+      </aside>
     </div>
 
     <script>
-        //Oppgave 1: Spillernavn
-        const playerName = "Spiller: Niklas"
-        document.getElementById("playername").innerHTML = playerName
-        //Oppgave 2: Penger
-        let coins = 0
-        document.getElementById("coins-count").innerHTML = coins
-        //Oppgave 3: Liv
-        let lives = 10
+      // Workshop 3 Oppgave 1
 
-        // Workshop 2 (Oppgave 3)
-     
-        const livesPrint = document.getElementById("lives-count")
-        livesPrint.innerHTML = lives
-        
-        // Workshop 2 (Oppgave 3)
-        // lager en if test for å sjekke om vi kun har 1 liv igjen 
-        if(lives < 2){
-            livesPrint .style.color = "red"
-        }
+      let gameConfig = [
+        {
+          playerName: "Spiller: Niklas",
+          lives: "0",
+          coins: 0,
+          level: 1,
+        },
+      ];
 
-        //Oppgave 4: Våpen-nivåer:
-        let longsword = 11
-        let warhammer = 11
-        let battleaxe = 11
-        let armour = 11
-        
+      // mapper player name fra gameConfig og skriver ut til html elementet "playername"
+      gameConfig.map(
+        (displayPlayerName) =>
+          (document.getElementById("playername").innerHTML =
+            displayPlayerName.playerName)
+      );
 
+      // mapper lives fra gameConfig og skriver ut til html elementet "lives-count"
+      gameConfig.map(
+        (displayPlayerLives) =>
+          (document.getElementById("lives-count").innerHTML =
+            displayPlayerLives.lives)
+            
+      );
       
 
+      // mapper level fra gameConfig og skriver ut til html elementet "level-count"
+      gameConfig.map(
+        (displayLevel) =>
+          (document.getElementById("level-count").innerHTML =
+            displayLevel.level)
+      );
 
-        // Workshop 2 (oppgave 1)
+      // mapper coins fra gameConfig og skriver ut til html elementet "coins-count"
+      gameConfig.map(
+        (dispalyCoins) =>
+          (document.getElementById("coins-count").innerHTML =
+            dispalyCoins.coins)
+      );
 
-        // lager if-test for å sjekke om antall coins er lik eller større enn null, hvis betingelsen ikke stemmer skriv ut vanlig variabel uten endring.
-        coinsPrint = ""
-        if(coins === 0) {
-            coinsPrint = "collect som coins" 
-        } else {
-            coinsPrint = coins
-            }
-        document.getElementById("coins-count").innerHTML = coinsPrint 
-        
-        
-        /* Koden under blir erstattet av iftestene med template litterals under
+      //Oppgave 1: Spillernavn
+      /*     const playerName = "Spiller: Niklas" KODET UT FOR ERSTATTING AV OBJEKT ARRAY I GAMECONFIG VARIABELEN OVER*/
+      // document.getElementById("playername").innerHTML = playerName
+      //Oppgave 2: Penger
+      /*   let coins = 0 KODET UT FOR ERSTATTING AV OBJEKT ARRAY I GAMECONFIG VARIABELEN OVER*/
+      // document.getElementById("coins-count").innerHTML = coins
+      //Oppgave 3: Liv
+      /*  let lives = 10 KODET UT FOR ERSTATTING AV OBJEKT ARRAY I GAMECONFIG VARIABELEN OVER*/
+      //  level
+      /*   let level = 1 KODET UT FOR ERSTATTING AV OBJEKT ARRAY I GAMECONFIG VARIABELEN OVER*/
+      //      document.getElementById("level-count").innerHTML = level
+      // Workshop 2 (Oppgave 3)
+      //  KODET UT FOR ERSTATTING AV OBJEKT ARRAY I GAMECONFIG VARIABELEN OVER*/
+      //  const livesPrint = document.getElementById("lives-count")
+      // livesPrint.innerHTML = lives
+
+      // Workshop 2 (Oppgave 3)
+      // lager en if test for å sjekke om vi kun har 1 liv igjen
+
+      //Oppgave 4: Våpen-nivåer:
+      let longsword = 8;
+      let warhammer = 55;
+      let battleaxe = 2;
+      let armour = 151;
+      // Workshop 2 (oppgave 1)
+      // lager if-test for å sjekke om antall coins er lik eller større enn null, hvis betingelsen ikke stemmer skriv ut vanlig variabel uten endring.
+      
+      if (coins <  0) {
+        dispalyCoins = "collect som coins";
+      } else {
+        gameConfig.map(
+        (dispalyCoins) =>
+          (document.getElementById("coins-count").innerHTML =
+            dispalyCoins.coins)
+      )}
+          
+
+      /* Koden under blir erstattet av iftestene med template litterals under
         // Workshop 2 (oppgave 2)
          const warhammerElement = document.getElementById("weapon-warhammer")
          if (warhammer >= 10){
@@ -115,80 +157,71 @@
         warhammerElement.innerHTML = warhammer
        /* longswordElement.innerHTML = battleaxe 
         armourElement.innerHTML = armour */
-        
-        // workshop 2 oppgave 4
-        /*Lag betinget logikk som sjekker hver våpen i armory om level er 0 (hvis level er null, har de ikke fått dette våpenet enda). 
+
+      // workshop 2 oppgave 4
+      /*Lag betinget logikk som sjekker hver våpen i armory om level er 0 (hvis level er null, har de ikke fått dette våpenet enda). 
         Hvis level er 0, skal ikke denne raden med våpen skrives ut. Hint: Tabellradene som skriver ut hvert våpen i armory ligger mellom <tr> og </tr>. 
         Her må HTML flyttes fra HTML-delen til JavaScript-delen, og man må lage en tekststreng som konkatinerer HTML-kode,
         tekst og variabler som skrives ut først når man får tak i våpenet (level 1).*/
-        const armoryTable = document.getElementById("showhide")
+      const armoryTable = document.getElementById("showhide");
 
-        if(longsword > 0) {
-            armoryTable.innerHTML = `
+      if (longsword > 0) {
+        armoryTable.innerHTML = `
                 <tr>
                     <td><img src="img/longsword.png"></td>
                     <td>Level: <span id="weapon-longsword">${longsword}</span></td>
                 </tr>
-                `
-                if(longsword >= 10){
-                    document.getElementById("weapon-longsword").style.color = "gold"
-                }
+                `;
+        if (longsword >= 10) {
+          document.getElementById("weapon-longsword").style.color = "gold";
         }
+      }
 
-        if(warhammer > 0) {
-            armoryTable.innerHTML += `
+      if (warhammer > 0) {
+        armoryTable.innerHTML += `
                 <tr>
                     <td><img src="img/warhammer.png"></td>
                     <td>Level: <span id="weapon-warhammer">${warhammer}</span></td>
                 </tr>
-                `
-                if(warhammer >= 10){
-                    document.getElementById("weapon-warhammer").style.color = "gold"
-                }
+                `;
+        if (warhammer >= 10) {
+          document.getElementById("weapon-warhammer").style.color = "gold";
         }
+      }
 
-        if(battleaxe > 0) {
-            armoryTable.innerHTML += `
+      if (battleaxe > 0) {
+        armoryTable.innerHTML += `
                 <tr>
-                    <td><img src="img/warhammer.png"></td>
-                    <td>Level: <span id="weapon-warhammer">${battleaxe}</span></td>
+                    <td><img src="img/battleaxe.png"></td>
+                    <td>Level: <span id="weapon-battleaxe">${battleaxe}</span></td>
                 </tr>
-                `
-                if(warhammer >= 10){
-                    document.getElementById("weapon-warhammer").style.color = "gold"
-                }
+                `;
+        if (battleaxe >= 10) {
+          document.getElementById("weapon-battleaxe").style.color = "gold";
         }
+      }
 
-        if(armour > 0) {
-            armoryTable.innerHTML += `
+      if (armour > 0) {
+        armoryTable.innerHTML += `
                 <tr>
-                    <td><img src="img/warhammer.png"></td>
-                    <td>Level: <span id="weapon-warhammer">${warhammer}</span></td>
+                    <td><img src="img/armour.png"></td>
+                    <td>Level: <span id="weapon-armour">${armour}</span></td>
                 </tr>
-                `
-                if(warhammer >= 10){
-                    document.getElementById("weapon-warhammer").style.color = "gold"
-                }
+                `;
+        if (armour >= 10) {
+          document.getElementById("weapon-armour").style.color = "gold";
         }
+      }
 
-    
-
-        //Oppgave 5: Utregning av poeng
-        let points = (coins * 5) + (longsword * 5) + (warhammer * 15) + (battleaxe * 20) + (armour * 25)
-        document.getElementById("points-count").innerHTML = points
-        //Oppgave 6: Utskrift av level
-        let level = 1
-        document.getElementById("level-count").innerHTML = level
-       
-       
-        
-
-
-
-    
-    
-
-
+      //Oppgave 5: Utregning av poeng
+      let points =
+        coins * 5 +
+        longsword * 5 +
+        warhammer * 15 +
+        battleaxe * 20 +
+        armour * 25;
+      document.getElementById("points-count").innerHTML = points;
+      //Oppgave 6: Utskrift av level
     </script>
-</body>
+  </body>
 </html>
