@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif;
+               font-size: 16px;
+               background: #f3f3f3;    
+        }
+        #products {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+        article{
+            background: #fff;
+            padding: 1rem;
+            border: 1px solid #ccc;
+        }
+            
+    </style>
+</head>
+<body>
+    
+        <h2>Handleliste</h2>
+        <ul id="handleliste"></ul>
+         
+        <h2>Produkter</h2>
+            <ul id="produktliste"></ul>
+        <section id="products">
+
+
+        </section>
+    <script>
+            // deklarere variabel med array (liste)
+        const handleListe = [
+            "Brød",
+            "Sjokolade",
+            "Egg",
+            "Melk",
+            "Ost",
+            "Pølse"
+        ]
+
+        console.log(handleListe)
+        // hente størrelsen (antall elementer i arrayen ) i en array
+        const antallVarer = handleListe.length
+        console.log("Handlelisten inneholder " + antallVarer + "varer")
+
+        // skrive ut et bestemt element fra handlelisten
+        const vare2 = handleListe[1]
+        console.log("Varen på rad 2 i handlelisten er " + vare2)
+        
+        // skrive ut et bestemt element med dynamisk index innbakt i variabel vi lagrer som const = index
+        const index = 2
+        // setter indexVare er lik hver indeks i handlelisten
+        const indexVare = handleListe[index]
+        console.log(`Varen på rad : ${index + 1} i handleListe er ${indexVare}`)
+
+        // sortere listen alfabetisk 
+        handleListe.sort()
+        // sorterer arrayen opp ned
+        handleListe.reverse()
+        // skriver ut til consollen MERK: INDEXENE FORANDRES IKKE, KUN ALFABETISK UTSKRIFT I LISTEN!
+        
+        console.log(handleListe)
+      
+        // legge til på arrayen med metoden .push()
+        handleListe.push("Pølsebrød", "Ketshup")  
+        console.log(handleListe)
+        // SORTERING ER CASE SENSETIVT. store bokstaver prioriteres og små etter reversering.
+
+        // hvis vi ønsker å legge til 1 rad i starten av arrayen 
+        handleListe.unshift("Sprøstekt løk")
+        console.log(handleListe)
+
+
+        //Sjekk: finnes Sjokolade i handlelisten? returnerer boolean (true eller false) kan brukes til å kjøre if test med kode hvis noe er true eller false eller er included i lista
+        // f.eks hvis sjokolade er i lista > true > kjør iftest med kode 
+
+            const vareSjekk = handleListe.includes("Sjokolade")
+
+            console.log(vareSjekk)
+
+        //Sjekk: hvilken index har ost?
+        const vareIndexSjekk = handleListe.indexOf("Ost")
+        // eller console.log("Index til ost: " + vareIndexSjekk)
+        console.log(`Index til ost: ${vareIndexSjekk} `)
+        
+
+        //Liste opp arrayen i HTML (vise på nettsiden)
+        //dette ønsker vi å oppnå : ett sett slike li elementer inni i ultaggen<li>Varenavn</li> metoden .map()
+        handleListe.map(vare => document.getElementById("handleliste").innerHTML += `<li>${vare}</li> ` )
+        
+        //Opprette object med nøkkel-verdi-par
+        const prod1 = {
+            produsent: "Nike",
+            model: "Air Zoom",
+            sport: "Running",
+            color: "Red"
+        }
+        //Skrive ut object-data til HTML 
+        const prodSport = prod1.sport
+        console.log(prodSport)
+
+
+        //Nytt object - alene eller i et register (organisert data)
+        //Produktregister: flerdimensjonale arrayer (arrayer med objecter) Tenk excel
+        const productRegister = [
+            {
+                produsent: "Nike",
+                model: "Air Zoom",
+                sport: "Running",
+                color: "Red"
+            }  ,
+            {
+                produsent: "Nike",
+                model: "Kobe 6",
+                sport: "Basketball",
+                color: "White"
+            },
+            {
+                produsent: "Adidas",
+                model: "Messi",
+                sport: "Fotball",
+                color: "Svart"
+            },
+            {
+                produsent: "Nike",
+                model: "Hyper Zoom",
+                sport: "Fotball",
+                color: "Red"
+            }
+        ]
+
+        console.log(productRegister)
+
+        //Filtrere produktregister (filter)
+
+
+        //Skrive ut produkter fra registeret (map)
+         productRegister.map(product => document.getElementById("products").innerHTML += `
+       <article> 
+              <h3>${product.produsent} ${product.model} </h3>
+               <p>Produsent: ${product.produsent} </p>
+               <p>Idrett: ${product.sport} </p> 
+               <p>Farge: ${product.color} </p> 
+               <p>Sport: ${product.sport} </p>
+               
+        </article>  
+         `)
+
+</script>
+</body>
+</html>
