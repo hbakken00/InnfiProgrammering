@@ -8,7 +8,12 @@
 </head>
 <body>
     
+        <h2>Handleliste</h2>
 
+            <ul id="handleliste">
+
+                
+            </ul>
 
     <script>
             // deklarere variabel med array (liste)
@@ -52,6 +57,40 @@
         // hvis vi ønsker å legge til 1 rad i starten av arrayen 
         handleListe.unshift("Sprøstekt løk")
         console.log(handleListe)
+
+
+        //Sjekk: finnes Sjokolade i handlelisten? returnerer boolean (true eller false) kan brukes til å kjøre if test med kode hvis noe er true eller false eller er included i lista
+        // f.eks hvis sjokolade er i lista > true > kjør iftest med kode 
+
+            const vareSjekk = handleListe.includes("Sjokolade")
+
+            console.log(vareSjekk)
+
+        //Sjekk: hvilken index har ost?
+        const vareIndexSjekk = handleListe.indexOf("Ost")
+        // eller console.log("Index til ost: " + vareIndexSjekk)
+        console.log(`Index til ost: ${vareIndexSjekk} `)
+        
+
+        //Liste opp arrayen i HTML (vise på nettsiden)
+
+
+        //Opprette object med nøkkel-verdi-par
+
+
+        //Skrive ut object-data til HTML (map)
+
+
+        //Nytt object - alene eller i et register (organisert data)
+
+
+        //Produktregister: flerdimensjonale arrayer (arrayer med objecter) Tenk excel
+
+
+        //Filtrere produktregister (filter)
+
+
+        //Skrive ut produkter fra registeret (map)
 
 
 </script>
