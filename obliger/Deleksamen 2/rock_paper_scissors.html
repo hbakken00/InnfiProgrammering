@@ -132,7 +132,7 @@
             <button type="button" onClick="play('scissors')" id="scissorsButton" class="playerChoice"><img src="scissors.jpg" alt="Scissors" /></button>
         </div>
         <div id="selection">
-            <!-- HTML element to show player selection  2 feil over skal være play, ikke playy--> 
+            <!-- HTML element to show player selection  1** feil over skal være play, ikke playy--> 
         </div>
         <div id="computer">
             <!-- HTML element to show computer selection -->
@@ -163,7 +163,7 @@
          * On mouseout, remove the text and class
          */
         buttons.forEach(button => {
-             // 1 feil kodet ut èn s for mye i buttons
+             // 2 ** feil kodet ut èn s for mye i buttons
             button.addEventListener("mouseover", (event) => {
                 document.getElementById("choice").innerHTML = button.childNodes[0].alt
                 document.getElementById("choice").setAttribute("class","choiceAnimate")
@@ -312,7 +312,7 @@
         }
 
         //Function for random numnber, fetched from MDN web docs:
-        function getRandomInt(max) {  // 5 feilstaving
+        function getRandomInt(max) {  // 5 feil staving
             return Math.floor(Math.random() * max);
         }
     </script>
