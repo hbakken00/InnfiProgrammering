@@ -24,10 +24,12 @@
         <aside id="hud-inventory">
             <h3>Armory</h3>
             <table id="showhide">
+                    <!-- 
                 <tr>
                     <td><img src="img/longsword.png"></td>
                     <td>Level: <span id="weapon-longsword"></span></td>
-                </tr>
+                </tr> 
+                    
                 <tr>
                     <td><img src="img/warhammer.png"></td>
                     <td>Level: <span id="weapon-warhammer"></span></td>
@@ -40,6 +42,7 @@
                     <td><img src="img/armour.png"></td>
                     <td>Level: <span id="weapon-armour"></span></td>
                 </tr>
+                -->
             </table>
         </aside>
     </div>
@@ -49,20 +52,30 @@
         const playerName = "Spiller: Niklas"
         document.getElementById("playername").innerHTML = playerName
         //Oppgave 2: Penger
-        let coins = 2
+        let coins = 0
         document.getElementById("coins-count").innerHTML = coins
         //Oppgave 3: Liv
-        let lives = 1
-        document.getElementById("lives-count").innerHTML = lives
+        let lives = 10
+
+        // Workshop 2 (Oppgave 3)
+     
+        const livesPrint = document.getElementById("lives-count")
+        livesPrint.innerHTML = lives
+        
+        // Workshop 2 (Oppgave 3)
+        // lager en if test for å sjekke om vi kun har 1 liv igjen 
+        if(lives < 2){
+            livesPrint .style.color = "red"
+        }
+
         //Oppgave 4: Våpen-nivåer:
-        let longsword = 20
-        let warhammer = 20
-        let battleaxe = 20
-        let armour = 20
-        document.getElementById("weapon-longsword").innerHTML = longsword
-        document.getElementById("weapon-warhammer").innerHTML = warhammer
-        document.getElementById("weapon-battleaxe").innerHTML = battleaxe
-        document.getElementById("weapon-armour").innerHTML = armour
+        let longsword = 11
+        let warhammer = 11
+        let battleaxe = 11
+        let armour = 11
+        
+
+      
         //Oppgave 5: Utregning av poeng
         let points = (coins * 5) + (longsword * 5) + (warhammer * 15) + (battleaxe * 20) + (armour * 25)
         document.getElementById("points-count").innerHTML = points
@@ -73,47 +86,99 @@
         // Workshop 2 (oppgave 1)
 
         // lager if-test for å sjekke om antall coins er lik eller større enn null, hvis betingelsen ikke stemmer skriv ut vanlig variabel uten endring.
-        if(coins <= 0) {
-            document.getElementById("coins-count").innerHTML = "Collect some coins!"
+        coinsPrint = ""
+        if(coins === 0) {
+            coinsPrint = "collect som coins" 
         } else {
-            coins.innerHTML = coins 
-        }
-        // Workshop 2 (oppgave 2)
-        // lager if-tester for å sjekke om level på våpen er lik eller større en 10, hvis betingelsen ikke stemmer, ikke gjør noe.
-        if(longsword >= 10){
-            document.getElementById("weapon-longsword").style.color = "#ffbf00" 
-        } else {
-            null
-        }
-        if(warhammer >= 10){
-            document.getElementById("weapon-warhammer").style.color = "#ffbf00"
-        } else {
-            null
-        }
-
-        if(battleaxe >= 10){
-            document.getElementById("weapon-battleaxe").style.color = "#ffbf00"
-        } else {
-            null
-        }
+            coinsPrint = coins
+            }
+        document.getElementById("coins-count").innerHTML = coinsPrint 
         
-        if(armour >= 10){
-            document.getElementById("weapon-armour").style.color = "#ffbf00"
-        } else {
-            null
-        }
+        
+        /* Koden under blir erstattet av iftestene med template litterals under
+        // Workshop 2 (oppgave 2)
+         const warhammerElement = document.getElementById("weapon-warhammer")
+         if (warhammer >= 10){
+            warhammerElement.style.color = "gold"
+         }
 
-        // Workshop 2 (Oppgave 3)
-        // lager en if test for å sjekke om vi kun har 1 liv igjen 
+         const battleaxeElement = document.getElementById("weapon-battleaxe")
+         if (battleaxe >= 10){
+            battleaxeElement.style.color = "gold"
+         }
 
-        if(lives === 1){
-            document.getElementById("lives-count").style.color = "red"
-        } 
+          const longswordElement = document.getElementById("weapon-longsword")
 
+         } 
+
+         const armourElement = document.getElementById("weapon-armour")
+         if(armour >= 10){
+            armourElement.style.color = "gold"
+         }
+        
+        battleaxeElement.innerHTML = longsword
+        warhammerElement.innerHTML = warhammer
+       /* longswordElement.innerHTML = battleaxe 
+        armourElement.innerHTML = armour */
+        
+        // workshop 2 oppgave 4
         /*Lag betinget logikk som sjekker hver våpen i armory om level er 0 (hvis level er null, har de ikke fått dette våpenet enda). 
         Hvis level er 0, skal ikke denne raden med våpen skrives ut. Hint: Tabellradene som skriver ut hvert våpen i armory ligger mellom <tr> og </tr>. 
         Her må HTML flyttes fra HTML-delen til JavaScript-delen, og man må lage en tekststreng som konkatinerer HTML-kode,
         tekst og variabler som skrives ut først når man får tak i våpenet (level 1).*/
+        const armoryTable = document.getElementById("showhide")
+
+        if(longsword > 0) {
+            armoryTable.innerHTML = `
+                <tr>
+                    <td><img src="img/longsword.png"></td>
+                    <td>Level: <span id="weapon-longsword">${longsword}</span></td>
+                </tr>
+                `
+                if(longsword >= 10){
+                    document.getElementById("weapon-longsword").style.color = "gold"
+                }
+        }
+
+        if(warhammer > 0) {
+            armoryTable.innerHTML += `
+                <tr>
+                    <td><img src="img/warhammer.png"></td>
+                    <td>Level: <span id="weapon-warhammer">${warhammer}</span></td>
+                </tr>
+                `
+                if(warhammer >= 10){
+                    document.getElementById("weapon-warhammer").style.color = "gold"
+                }
+        }
+
+        if(battleaxe > 0) {
+            armoryTable.innerHTML += `
+                <tr>
+                    <td><img src="img/warhammer.png"></td>
+                    <td>Level: <span id="weapon-warhammer">${battleaxe}</span></td>
+                </tr>
+                `
+                if(warhammer >= 10){
+                    document.getElementById("weapon-warhammer").style.color = "gold"
+                }
+        }
+
+        if(armour > 0) {
+            armoryTable.innerHTML += `
+                <tr>
+                    <td><img src="img/warhammer.png"></td>
+                    <td>Level: <span id="weapon-warhammer">${warhammer}</span></td>
+                </tr>
+                `
+                if(warhammer >= 10){
+                    document.getElementById("weapon-warhammer").style.color = "gold"
+                }
+        }
+
+    
+
+
        
        
         
