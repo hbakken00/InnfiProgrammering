@@ -162,7 +162,8 @@
          * On mouseover, show the alt-text of the image inside the button and add animation class
          * On mouseout, remove the text and class
          */
-        buttons.forEach(button => { // 1 feil kodet ut èn s for mye i buttons
+        buttons.forEach(button => {
+             // 1 feil kodet ut èn s for mye i buttons
             button.addEventListener("mouseover", (event) => {
                 document.getElementById("choice").innerHTML = button.childNodes[0].alt
                 document.getElementById("choice").setAttribute("class","choiceAnimate")
@@ -203,7 +204,8 @@
             //Lets write the computer selection to the console to make sure we have a valid hit:
             console.log("Computer selected: " + computerSign)
             // Good! Now we also have to show this on the website, by making #computer visible and filling it with HTML:
-            const computer = document.getElementById("computer") // 3 feil stave getElementById riktig
+            const computer = document.getElementById("computer") 
+            // 3 feil stave getElementById riktig
             
             computer.style.display = "block"
             /* OPPGAVE 2.1: FORKLAR HVA SOM SKJER PÅ LINJE 208
@@ -252,6 +254,7 @@
             //Now you know the drill: show #winner by display: block and fill it with HTML:
             const winnerDiv = document.getElementById("winner")
             winnerDiv.style.display = "block"
+            
             // oppgave 5
             if(winner == "player"){
                 winnerDiv.innerHTML = `You win`
@@ -267,7 +270,8 @@
                settes er lik elementet med ID winner i html som
                displayer elementet winner som block i css dvs at elementet tar opp satt width og height
              */
-            // oppgave 3
+           
+             // oppgave 3
              if(winner == "player") {
             document.getElementById("winner").style.backgroundColor = "#FFD700"
             } else {
@@ -308,7 +312,7 @@
         }
 
         //Function for random numnber, fetched from MDN web docs:
-        function getRandomInt(max) {  // feilstaving
+        function getRandomInt(max) {  // 5 feilstaving
             return Math.floor(Math.random() * max);
         }
     </script>
