@@ -127,12 +127,13 @@
     <section id="gamearea">
         <div id="playerSigns">
             <h2 id="instruction">Play your hand:<span id="choice"></span></h2>
-            <button type="button" onClick="play('rock')" id="rockButton" class="playerChoice"><img src="rock.jpg" alt="Rock" /></button>  
+            <!-- FEIL 1 feilstavelse i play i onclick-->
+            <button type="button" onClick="play('rock')" id="rockButton" class="playerChoice"><img src="rock.jpg" alt="Rock" /></button>
             <button type="button" onClick="play('paper')" id="paperButton" class="playerChoice"><img src="paper.jpg" alt="Paper" /></button>
             <button type="button" onClick="play('scissors')" id="scissorsButton" class="playerChoice"><img src="scissors.jpg" alt="Scissors" /></button>
         </div>
         <div id="selection">
-            <!-- HTML element to show player selection  1** feil over skal være play, ikke playy--> 
+            <!-- HTML element to show player selection -->
         </div>
         <div id="computer">
             <!-- HTML element to show computer selection -->
@@ -140,11 +141,12 @@
         <div id="winner">
             <!-- HTML element to show winner -->
         </div>
+           <!-- legger til HTML elementer til utskrift   -->
         <div id="counterBox" style="display: flex;flex-direction: column;">
             <div>Number of games played: <span id="counter-games-played">0</span></div>
             <div>Player wins: <span id="counter-player-wins">0</span></div>
             <div>Computer Wins: <span id="counter-computer-wins">0</span></div>
-            <div>Draws: <span id="counter-tie">0</span></div>
+            <div>Draws: <span id="counter-draw">0</span></div>
 
             <!-- A hidden button to show after a game, that resets and let the player play again -->
             <button id="replay" onClick="restartGame()">Play again</button>
@@ -155,12 +157,11 @@
         //We'll prepare an empty variable that later will contain the winner
         let winner = ""
         //And prepare a counter-variable for number of games played:
-        let counterGames = 0
-      // oppgave 6 
-              // lager variabler for teller wins for alle
-            let counterComputer = 0
-            let counterPlayer = 0 
-            let counterTie = 0
+        let counterGamesPlayed = 0
+        // deklarerer nye variabler klargjort for telling av wins
+        let counterPlayerWins = 0
+        let counterComputerWins = 0
+        let counterDraw = 0 
         //Make available signs available in code as an array
         const signs = ["rock", "paper", "scissors"]
         
@@ -171,8 +172,8 @@
          * On mouseover, show the alt-text of the image inside the button and add animation class
          * On mouseout, remove the text and class
          */
+        // FEIL 3 feilstavelse i buttons
         buttons.forEach(button => {
-             // 2 ** feil kodet ut èn s for mye i buttons
             button.addEventListener("mouseover", (event) => {
                 document.getElementById("choice").innerHTML = button.childNodes[0].alt
                 document.getElementById("choice").setAttribute("class","choiceAnimate")
@@ -213,14 +214,12 @@
             //Lets write the computer selection to the console to make sure we have a valid hit:
             console.log("Computer selected: " + computerSign)
             // Good! Now we also have to show this on the website, by making #computer visible and filling it with HTML:
-            const computer = document.getElementById("computer") 
-            // 3 feil stave getElementById riktig
+            // FEIL 4 document.getElementById feilstavelse
+            const computer = document.getElementById("computer")
             
             computer.style.display = "block"
             /* OPPGAVE 2.1: FORKLAR HVA SOM SKJER PÅ LINJE 208
-             * her tar vi variabelen computer som vi deklarerer i linje 206 og 
-               setter er lik elementet med ID computer i html som d
-               displayer elementet computer som block i css dvs at elementet tar opp gitt width og height
+             * _ditt svar her_ 
              */
 
             computer.innerHTML = "Computer selects " + computerSign
@@ -259,64 +258,61 @@
                     winner = "player"
                 }
             }
+            // OPPGAVE 3 HVIS player vinner skal bakgrunnsfargen endres til gull
+            if (winner == "player") {
+                document.getElementById("winner").style.backgroundColor = "gold"
+            } else {
+                document.getElementById("winner").style.backgroundColor = "#4b4737"
+            }
             //Now we have checks to set the winner. Let's write it to the website.
             //Now you know the drill: show #winner by display: block and fill it with HTML:
             const winnerDiv = document.getElementById("winner")
             winnerDiv.style.display = "block"
             
-            // oppgave 5
+            // OPPGAVE 5 
+           // kodet ut for iftesten under som skriver ut forskjellig text winnerDiv.innerHTML = "The winner is " + winner
             if(winner == "player"){
-                winnerDiv.innerHTML = `You win`
-            } else if (winner == "computer"){
-                winnerDiv.innerHTML = `You loose`
+                winnerDiv.innerHTML = "You win" + winner
+            } else if(winner == "computer") {
+                winnerDiv.innerHTML = "You loose"
             } else {
-                winnerDiv.innerHTML = `It's a tie`
+                winnerDiv.innerHTML = "It's a tie"
             }
 
-          /*  winnerDiv.innerHTML = "The winner is " + winner  kodet ut linje til fordel for koden over oppgave 5*/ 
+
+
             /* OPPGAVE 2.2: FORKLAR HVA SOM SKJER PÅ LINJE 254
-             * variabelen winnderDiv som deklareres på linje 253 over
-               settes er lik elementet med ID winner i html som
-               displayer elementet winner som block i css dvs at elementet tar opp satt width og height
+             * variabelen winnerDiv som blir deklarert over og satt er lik id"winner" blir skrevet ut til html elementet med en konkantinering sammen med variabelen winner 
              */
-           
-             // oppgave 3
-             if(winner == "player") {
-            document.getElementById("winner").style.backgroundColor = "#FFD700"
-            } else {
-            document.getElementById("winner").style.backgroundColor = "#4b4737"
-            }
-
-
 
             //Now, lastly, let's update the counter on how many games we have played:
-            // tellerne for wins
-            counterGames = counterGames + 1
-            counterComputer = counterComputer + 1
-            counterPlayer = counterPlayer + 1 
-            counterTie = counterTie + 1 
-            // oppgave 4 
-
-            document.getElementById("counter-games-played").innerHTML = counterGames
-            if(counterGames + 1){
+            counterGamesPlayed = counterGamesPlayed + 1
+            counterComputerWins = counterComputerWins 
+            counterPlayerWins = counterPlayerWins 
+            counterDraw = counterDraw 
+            // OPPGAVE 4 styler elementet "counter" til rød hvis counter øker med 1
+            if (counterGamesPlayed + 1) {
                 document.getElementById("counter-games-played").style.color = "red"
             }
+    
+            document.getElementById("counter-games-played").innerHTML = ` ${counterGamesPlayed}` 
+        // oppgave 6 iftester for å sjekke winner og legge til på variablene som telles
+            if (winner == "computer") {
+                document.getElementById("counter-computer-wins").innerHTML = `${counterComputerWins ++}` 
+            } 
 
-            document.getElementById("counter-player-wins").innerHTML = counterPlayer
-            if(counterPlayer + 1){
-                document.getElementById("counter-games-played").style.color = "red"
+            if (winner == "player"){
+                document.getElementById("counter-player-wins").innerHTML = `${counterPlayerWins ++}`
             }
-            
            
-
-            // oppgave 6 
-
-             
+            if (winner == "undecided") {
+                document.getElementById("counter-draw").innerHTML = `${counterDraw ++}`
+           }
+           
+           
             
-            
-            
-             /* OPPGAVE 2.3: FORKLAR HVA SOM SKJER PÅ LINJE 262
-            variabelen counter blir plusset på med 1 hvor hver gang spillet er spillt 
+            /* OPPGAVE 2.3: FORKLAR HVA SOM SKJER PÅ LINJE 262
+             * variabelen counter blir plusset på med 1 for hver gang spillet er spilt, og blir skrevet ut til HTML elementet med id "counter" 
              */
 
             //And display the button for playing again:
@@ -342,7 +338,8 @@
         }
 
         //Function for random numnber, fetched from MDN web docs:
-        function getRandomInt(max) {  // 5 feil staving
+        // FEIL 2 feilstavelse i function
+        function getRandomInt(max) {
             return Math.floor(Math.random() * max);
         }
     </script>
