@@ -105,7 +105,7 @@
     ]
          // gjøre klar en variabel for armory-html rader
          let armoryHTML = ""
-         armory.map(weapon => armoryHTML += `<tr><td>${weapon.weaponName}</td></tr>`)
+         armory.map(weapon => armoryHTML += `<tr><td><img src"${weapon.weaponIcon}.png"> </img>  ${weapon.weaponName}</td></tr>`)
 
          document.getElementById("showhide").innerHTML = armoryHTML
          
