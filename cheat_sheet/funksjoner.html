@@ -8,10 +8,16 @@
 </head>
 <body>
     
+        <p id="text" onclick="textChange()" >Her står det en tekst. Klikk meg for å endre teksten</p>
+    <script>    
 
-    <script>
+        function textChange() {
+           
+            document.getElementById("text").innerHTML = "Her står det en annen tekst"
 
-            
+        }
+
+        
 
     </script>
 </body>
