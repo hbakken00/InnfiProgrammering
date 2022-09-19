@@ -225,6 +225,7 @@
             computer.innerHTML = "Computer selects " + computerSign
             // Ok, now we have to check for rules! Paper beats rock, rock beat scissors, scissors beat paper.
             // This means if players sign beat computer sign, player wins. Lets try:
+            
             if(playerSign === "paper") {
                 if(computerSign === "rock") {
                     winner = "player"
@@ -281,9 +282,9 @@
             if(winner == "player"){
                 winnerDiv.innerHTML = `You win!`
             } else if(winner == "computer") {
-                winnerDiv.innerHTML = "You loose"
+                winnerDiv.innerHTML = "You loose!"
             } else {
-                winnerDiv.innerHTML = "It's a tie"
+                winnerDiv.innerHTML = "It's a tie!"
             }
 
 
