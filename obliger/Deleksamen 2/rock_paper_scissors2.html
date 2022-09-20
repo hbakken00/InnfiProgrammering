@@ -127,7 +127,7 @@
     <section id="gamearea">
         <div id="playerSigns">
             <h2 id="instruction">Play your hand:<span id="choice"></span></h2>
-            <!-- FEIL 1 feilstavelse i play i onclick-->
+            <!-- FEIL 1 feilstavelse i play fra "playy" i onclick-->
             <button type="button" onClick="play('rock')" id="rockButton" class="playerChoice"><img src="rock.jpg" alt="Rock" /></button>
             <button type="button" onClick="play('paper')" id="paperButton" class="playerChoice"><img src="paper.jpg" alt="Paper" /></button>
             <button type="button" onClick="play('scissors')" id="scissorsButton" class="playerChoice"><img src="scissors.jpg" alt="Scissors" /></button>
@@ -172,7 +172,7 @@
          * On mouseover, show the alt-text of the image inside the button and add animation class
          * On mouseout, remove the text and class
          */
-        // FEIL 3 feilstavelse i buttons
+        // FEIL 2 feilstavelse i buttons variabelen
         buttons.forEach(button => {
             button.addEventListener("mouseover", (event) => {
                 document.getElementById("choice").innerHTML = button.childNodes[0].alt
@@ -214,19 +214,19 @@
             //Lets write the computer selection to the console to make sure we have a valid hit:
             console.log("Computer selected: " + computerSign)
             // Good! Now we also have to show this on the website, by making #computer visible and filling it with HTML:
-            // FEIL 4 document.getElementById feilstavelse
+            // FEIL 3 document.getElementById feilstavelse
             const computer = document.getElementById("computer")
             
             computer.style.display = "block"
             /* OPPGAVE 2.1: FORKLAR HVA SOM SKJER PÅ LINJE 208
-             * tar variabelen computer som er satt er lik HTML elementet med ID "computer" til å styles og displayes block
+             * tar variabelen computer som er satt er lik HTML elementet med ID "computer" til å styles og displayes synlig til block
              */
 
             computer.innerHTML = "Computer selects " + computerSign
             // Ok, now we have to check for rules! Paper beats rock, rock beat scissors, scissors beat paper.
             // This means if players sign beat computer sign, player wins. Lets try:
 
-            // OPPGAVE 8
+            // OPPGAVE 8 
           
             if (playerSign == computerSign) {
                 winner = "undecided"
@@ -237,15 +237,17 @@
             }  else if (playerSign === "rock" && computerSign === "scissors"){
                 winner = "player"
             }   
-                if (playerSign === "rock" && computerSign === "paper") {
+              if (playerSign === "rock" && computerSign === "paper") {
                 winner = "computer"
             } else if (playerSign === "paper" && computerSign === "scissors"){
                 winner = "computer"
             }  else if (playerSign === "scissors" && computerSign === "rock"){
                 winner = "computer"
             }
-            
+        
 
+
+            
           /*  if(playerSign === "paper") {
                 if(computerSign === "rock") {
                     winner = "player"
@@ -279,7 +281,7 @@
                     winner = "player"
                 }
             } */
-            
+
             // OPPGAVE 3 HVIS player vinner skal bakgrunnsfargen endres til gull med .style
             if (winner == "player") {
                 document.getElementById("winner").style.backgroundColor = "gold"
@@ -348,6 +350,10 @@
             //And display the button for playing again:
             document.getElementById("replay").style.display = "block"
         }
+       
+
+
+         
 
         //Now, we need to make a function that restarts the game. This means setting all 
         //variables and values back to their initial state, so nothing is selected as we start:
@@ -368,7 +374,7 @@
         }
 
         //Function for random numnber, fetched from MDN web docs:
-        // FEIL 2 feilstavelse i function
+        // FEIL 4 feilstavelse i function
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
         }
