@@ -141,7 +141,7 @@
         <div id="winner">
             <!-- HTML element to show winner -->
         </div>
-           <!-- legger til HTML elementer til utskrift   -->
+           <!-- legger til HTML elementer til utskrift // har lagt til fler id'er og flexet containeren nedover for morro skyld  -->
         <div id="counterBox" style="display: flex;flex-direction: column;">
             <div>Number of games played: <span id="counter">0</span></div>
             <div>Player wins: <span id="counter-player-wins">0</span></div>
@@ -225,6 +225,8 @@
             computer.innerHTML = "Computer selects " + computerSign
             // Ok, now we have to check for rules! Paper beats rock, rock beat scissors, scissors beat paper.
             // This means if players sign beat computer sign, player wins. Lets try:
+
+            // OPPGAVE 8
             
             if(playerSign === "paper") {
                 if(computerSign === "rock") {
@@ -259,7 +261,7 @@
                     winner = "player"
                 }
             }
-            // OPPGAVE 3 HVIS player vinner skal bakgrunnsfargen endres til gull
+            // OPPGAVE 3 HVIS player vinner skal bakgrunnsfargen endres til gull med .style
             if (winner == "player") {
                 document.getElementById("winner").style.backgroundColor = "gold"
             } else {
@@ -270,7 +272,8 @@
 
             //Now you know the drill: show #winner by display: block and fill it with HTML:
             const winnerDiv = document.getElementById("winner")
-            // oppgave 7 
+         
+            // OPPGAVE 7 setTimeout... Filket mye med denne for å få til å fungere
             document.getElementById("winner").style.display = "none"
             setTimeout(function() {
                 winnerDiv.style.display = "block"
@@ -305,7 +308,7 @@
             document.getElementById("counter").innerHTML = counter 
            
     
-        // oppgave 6    Iftester for å sjekke hvem winner er, og så legge til telleren deklarert over 
+        // OPPGAVE 6    Iftester for å sjekke hvem winner er, og så legge til telleren deklarert over (vet ikke om det er gjort på best mulig måte, men jeg fikk det til å fungere)
   
         if(winner == "player") {
                 document.getElementById("counter-player-wins").innerHTML = counterPlayerWins += 1
