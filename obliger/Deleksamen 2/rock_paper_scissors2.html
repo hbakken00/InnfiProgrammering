@@ -219,7 +219,7 @@
             
             computer.style.display = "block"
             /* OPPGAVE 2.1: FORKLAR HVA SOM SKJER PÅ LINJE 208
-             * tar variabelen computer som er satt er lik HTML elementet med ID "computer" til å styles og displaye block
+             * tar variabelen computer som er satt er lik HTML elementet med ID "computer" til å styles og displayes block
              */
 
             computer.innerHTML = "Computer selects " + computerSign
@@ -227,8 +227,26 @@
             // This means if players sign beat computer sign, player wins. Lets try:
 
             // OPPGAVE 8
+          
+            if (playerSign == computerSign) {
+                winner = "undecided"
+            } else if (playerSign === "paper" && computerSign === "rock") {
+                winner = "player"
+            } else if (playerSign === "scissors" && computerSign === "paper"){
+                winner = "player"
+            }  else if (playerSign === "rock" && computerSign === "scissors"){
+                winner = "player"
+            }   
+                if (playerSign === "rock" && computerSign === "paper") {
+                winner = "computer"
+            } else if (playerSign === "paper" && computerSign === "scissors"){
+                winner = "computer"
+            }  else if (playerSign === "scissors" && computerSign === "rock"){
+                winner = "computer"
+            }
             
-            if(playerSign === "paper") {
+
+          /*  if(playerSign === "paper") {
                 if(computerSign === "rock") {
                     winner = "player"
                 }
@@ -260,7 +278,8 @@
                 if(computerSign === "paper") {
                     winner = "player"
                 }
-            }
+            } */
+            
             // OPPGAVE 3 HVIS player vinner skal bakgrunnsfargen endres til gull med .style
             if (winner == "player") {
                 document.getElementById("winner").style.backgroundColor = "gold"
@@ -273,7 +292,7 @@
             //Now you know the drill: show #winner by display: block and fill it with HTML:
             const winnerDiv = document.getElementById("winner")
          
-            // OPPGAVE 7 setTimeout... Filket mye med denne for å få til å fungere
+            // OPPGAVE 7 setTimeout
             document.getElementById("winner").style.display = "none"
             setTimeout(function() {
                 winnerDiv.style.display = "block"
