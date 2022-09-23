@@ -21,10 +21,24 @@
     </article>
     <script>
         const fruits = ["Epler","Bananer","Brokkoli"]
-        fruits.map(fruit => document.getElementById("fruits").innerHTML += `<li>${fruit}</li>`)
+     //   fruits.map(fruit => document.getElementById("fruits").innerHTML += `<li>${fruit}</li>`)
 
         const meats = ["Kjøttdeig", "Laks", "Biff", "Fiskekaker"]
-        fruit.map(meats => document.getElementById("meat").innerHTML += `<li>${meats}</li>`)
+    //    fruit.map(meats => document.getElementById("meat").innerHTML += `<li>${meats}</li>`)
+      
+     const misc = ["Dopapir", "Tannbørste", "Oppvaskmiddel"]
+      
+        function listPrint (id, array) {
+            array.map(food => document.getElementById(id).innerHTML += `<li>${food} </li>`)
+        }
+
+        
+        listPrint("fruits", fruits)
+        listPrint("meat", meats)
+        listPrint("misc", misc)
+        
+
+
 
 
     </script>
