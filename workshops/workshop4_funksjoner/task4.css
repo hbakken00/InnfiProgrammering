@@ -22,7 +22,7 @@ div, section, aside, article, span {
 }
 
 #hud-top {
-    background: rgba(0, 0, 0, 0.8);
+    background: #00000011;
     width: 100%;
     position: fixed;
     top: 0;

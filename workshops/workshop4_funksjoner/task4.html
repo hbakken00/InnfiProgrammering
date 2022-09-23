@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Workshop 1: Variabler</title>
-    <link href="task3.css" rel="stylesheet" media="all">
+    <link href="task4.css" rel="stylesheet" media="all">
 </head>
 <body>
     <div id="gamearea">
@@ -19,6 +19,26 @@
             <div id="points"><img src="img/points.png" /> <span id="points-count">0</span></div>
             <div id="level">Level: <span id="level-count">0</span></div>
         </section>
+        
+        <section id="playarea" style="background: #0001;display: flex;flex-direction: row; ;">
+            
+           <div style="margin: 1%;">
+            <button type="button" onclick="modifyCoins(5)">Add 5 coins</button>
+            <button type="button" onclick="modifyCoins(-5)">Loose 5 coins</button>
+        </div>
+        <div style="margin: 1%;">
+
+                <button type="button" onclick="modifyLife(1)">Add lives</button>
+                <button type="button" onclick="modifyLife(-1)">Loose lives</button>
+            </div>
+            <div style="margin: 1%;">
+
+                <button type="button" onclick="restartGame()">restartGame</button>
+            </div>
+                
+                
+                </section>
+        
         <aside id="hud-inventory">
             <h3>Armory</h3>
             <table id="showhide">
@@ -34,14 +54,82 @@
         // workshop 3 oppgave 1
         const gameConfig = {
             playerName: "Niklas",
-            coins: 5,
+            coins: 50,
             lives: 3,
             level: 1
 
         }
-        function modifyCoins (modifyer) {
-            console.log(modifyer)
+       
+        // workshop 4 oppgave 1 modifisere coins funksjon se onlick over i html 
+        function modifyCoins (modifyerCoins) {
+            gameConfig.coins = gameConfig.coins + modifyerCoins
+
+            if(gameConfig.coins <= 0){
+
+                gameConfig.coins = 0
+                document.getElementById("coins-count").innerHTML = "Get some coins"
+
+            } else {
+            
+                document.getElementById("coins-count").innerHTML = gameConfig.coins
+            }
+
+            modifyPoints(gameConfig.coins, armoryPoints)
         }
+        // workshop 4 oppgave 2 modifisere lives funksjon se onlick over i html 
+
+        function modifyLife (modifyerLives) {
+            gameConfig.lives = gameConfig.lives + modifyerLives
+
+
+            if (gameConfig.lives <= 0){
+                gameConfig.lives = 0
+                document.getElementById("lives-count").innerHTML = "Collect some lives"
+
+            } else {
+                document.getElementById("lives-count").innerHTML = gameConfig.lives
+
+            }
+                        
+        }   
+        // workshop 4 oppgave 3
+        function modifyPoints (coins, armoryPoints){
+            let points = armoryPoints + (coins * 5)
+            document.getElementById("points-count").innerHTML = points
+
+        }
+
+        function restartGame() {
+                gameConfig.coins = 50
+                gameConfig.lives = 3
+                gameConfig.level = 1
+
+                document.getElementById("coins-count").innerHTML = gameConfig.coins
+                document.getElementById("lives-count").innerHTML = gameConfig.lives
+                document.getElementById("level-count").innerHTML = gameConfig.level
+
+                for (weapon of armory){
+                    weapon.level = 1 
+                    console.log(weapon)
+                }
+                let armoryHTML = ""
+                let armoryPoints = 0
+
+                armory.map(weapon => { 
+            // hvis våpebn level er større en 0 legg til htmlen for våpenraden
+            weapon.level > 0 ? armoryHTML += `<tr>
+                 <td><img src="img/${weapon.weaponIcon}.png" />  ${weapon.weaponName}</td>
+                 <td ${weapon.level > 9 ? `class = "gold"` : null}>${weapon.level} </td> 
+            </tr>` : null
+            // legg level * value for våenet til armoryPoints
+            armoryPoints += weapon.level * weapon.value 
+        })
+
+        document.getElementById("showhide").innerHTML = armoryHTML
+        
+        modifyPoints(gameConfig.coins, armoryPoints)
+        }
+
 
         //PLAYERNAME - INITITAL PRINT
         //const playerName = "Niklas"
@@ -109,28 +197,33 @@
 
     ]
          // gjøre klar en variabel for armory-html rader
-         let armoryHTML = ""
+       
          let armoryPoints = 0
-         // løpe igjennom armory arrayen med map og lage HTML
-         armory.map(weapon => { 
+         let armoryHTML = ""
+
+            // løpe igjennom armory arrayen med map og lage HTML
+            armory.map(weapon => { 
+            // hvis våpebn level er større en 0 legg til htmlen for våpenraden
             weapon.level > 0 ? armoryHTML += `<tr>
                  <td><img src="img/${weapon.weaponIcon}.png" />  ${weapon.weaponName}</td>
                  <td ${weapon.level > 9 ? `class = "gold"` : null}>${weapon.level} </td> 
             </tr>` : null
+            // legg level * value for våenet til armoryPoints
             armoryPoints += weapon.level * weapon.value 
         })
 
 
-        // skrive ut armory HTML til armory tabellen i html-delen
+
+         // skrive ut armory HTML til armory tabellen i html-delen
         document.getElementById("showhide").innerHTML = armoryHTML
 
-        // teste armoryPoins
+         // teste armoryPoins
         console.log(armoryPoints)
  
          
-    //POINTS - INITIAL PRINT
-      let points = (gameConfig.coins * 5) + armoryPoints
-      // ERSTATTET AV armoryPoints variabel   + (longsword * 5) + (warhammer * 15) + (battleaxe * 20) + (armour * 25)
+         //POINTS - INITIAL PRINT
+       let points = (gameConfig.coins * 5) + armoryPoints
+        // ERSTATTET AV armoryPoints variabel   + (longsword * 5) + (warhammer * 15) + (battleaxe * 20) + (armour * 25)
         document.getElementById("points-count").innerHTML = points
         
       
