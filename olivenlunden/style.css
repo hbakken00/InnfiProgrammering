@@ -4,6 +4,7 @@ html, body {
     font-family: 'Roboto';font-size: 22px;
 }
 
+
 main {
     background: #ffff;
 }
@@ -62,15 +63,27 @@ p {
     font-size: 20px;
 }
 
-#header {
-    width: 100%;
+/*header {
+    background-size: cover;
     min-height: 100vh;
-    background-image: url("headerBilde.jpg");
-    background-size: 100% ;
+    background-image: url("forsideBilde.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center center;
 
+} */ 
+header {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-image: url("forsideBilde.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 10vh;
+    padding-bottom: 20vh
 }
 .text {
     font-size: 15px;
