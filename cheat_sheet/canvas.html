@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #f3f3f3;
+            background: #666262;
         }
         #drawing {
             background: #fff;
@@ -33,6 +33,12 @@
     // openGL er ideell for 2d grafikk i nettleseren, krever lite resursser. 
     const ctx = canvas.getContext("2d")
 
+    // firkanter 3 tilgjengelige  metoder
+    // for å tegne de bruk metoden rect() 4 parametere, start x+y, width og heigth:
+    const rectSize = 100
+    
+    ctx.rect(650, 450, 100, 100)
+    ctx.fill()
     
 
 
