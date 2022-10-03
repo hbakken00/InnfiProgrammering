@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas cheat sheet</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f3f3f3;
+        }
+        #drawing {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    
+<canvas id="drawing"></canvas>
+
+<script>
+
+    // hente canvas elementet inn i koden vår
+    const canvas = document.getElementById("drawing")
+    // sette canvas-strørrelsen i koden:
+    canvas.width = 700
+    canvas.height = 500
+    // etter vi har definert høyde og bredde må vi gi det en kontekst
+    // openGL er ideell for 2d grafikk i nettleseren, krever lite resursser. 
+    const ctx = canvas.getContext("2d")
+
+    
+
+
+</script>
+
+
+</body>
+</html>
