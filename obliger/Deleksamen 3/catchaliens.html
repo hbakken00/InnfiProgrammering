@@ -21,8 +21,8 @@
         <ol id="points"></ol>
     </aside>
     <script>
-        //Sett opp Canvas:
-        const canvas = document.getElementBYId("gamearea")
+        //Sett opp Canvas: // FEIL 4 feilstavelse i getElementById
+        const canvas = document.getElementById("gamearea")
         canvas.width = 704; //64px ikoner * 11 ruter
         canvas.height = 512; //64px ikoner * 8 ruter
         const ctx = canvas.getContext("2d");
@@ -60,7 +60,7 @@
         /************************************************************** 
          OPPGAVE 2 - KOMMENTAR 1
          Forklar hva de fire linjene i funksjonen drawCharacters() gjør
-         - din kommentar her -
+         -funksjon som skriver player til et bestemt punkt på canvas ved start, og enemy ved et random punkt med Math.random() metoden.-
         ***************************************************************/
 
         //Sjekk om spilleren har trykket ned (og holder) en tast:
@@ -71,11 +71,11 @@
         let right = false
         let up = false
         let down = false
-        //Set retningsvariabel til true hvis riktig piltast er trykket:
-        function buttonPressed(event) 
+        //Set retningsvariabel til true hvis riktig piltast er trykket: FEIL 1 krokkodille parantes manglet i funksjonen
+        function buttonPressed(event) {
             if(event.key === "ArrowLeft") { left = true } 
             if(event.key === "ArrowRight") { right = true } 
-            if(event.key === "ArrowUp") { up = true }.
+            if(event.key === "ArrowUp") { up = true }
             if(event.key === "ArrowDown") { down = true } 
         }
         //Sett retningsvariabel til false hvis piltasten blir sluppet opp:
@@ -89,13 +89,13 @@
          OPPGAVE 2 - KOMMENTAR 2
          Forklar hvorfor vi trenger å sjekke både når en knapp er trykket ned,
          og når den er sluppet opp igjen. 
-         - din kommentar her -
+         - Hvis vi ikke registrerer at knappen er sluppet opp igjen vil den forbli nedtrukket. da vil ikke romskipet stoppe. det er også en eventlistner på keyup  -
         ***************************************************************/
         
         //Funksjon som modifiserer spillerens posisjon på spillbrettet:
         function playerMovement(speedModifier) {
-            //Flytt player i riktig retning
-            left ?? player.x -= player.speed * (speedModifier) : null
+            //Flytt player i riktig retning FEIL 2, ett ekstra spørsmålstegn!
+            left  ? player.x -= player.speed * (speedModifier) : null
             right ? player.x += player.speed * speedModifier : null
             up ? player.y -= player.speed * speedModifier : null
             down ? player.y += player.speed * speedModifier : null
@@ -114,7 +114,7 @@
 
         //Lag funksjon for nedtelling
         function countdownFunction() {
-            countdown--
+            countdown --
             if(countdown <= 0) {
                 clearInterval(countdownFunction)
                 gameOver = true
@@ -126,7 +126,7 @@
         /************************************************************** 
          OPPGAVE 2 - KOMMENTAR 3
          Forklar hva linjene i funksjonen countDownFunction() gjør
-         - din kommentar her -
+         - countdown-- helt til hvis countdown er mindre eller er lik 0 reset countdown med clearInterval() metoden -
         ***************************************************************/
 
         //Kjør funksjonen for nedtelling hver sekund (1000. milisekund)
@@ -142,9 +142,9 @@
             document.getElementById("points").innerHTML = aliensCaught
         }
 
-        //Funksjon som kjører spillet
-        functio renderGame() {
-            playerMovement(1)
+        //Funksjon som kjører spillet FEIL 3 Feilstavelse i function
+        function renderGame() {
+            playerMovement(1) // kan endre på hatigheten her
             drawGameElements()
             requestAnimationFrame(renderGame)
         }
