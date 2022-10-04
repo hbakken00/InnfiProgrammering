@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Animation Frame</title>
+    <style>
+        body{
+            background: #a1a1a1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas{
+            background: #fff;
+
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="animarea"></canvas>
+
+<script>
+    // gjøre klar canvas:
+    const canvas = document.getElementById("animarea")
+    canvas.width = 600
+    canvas.height = 400
+    // hente konteksten ctx
+    const ctx = canvas.getContext("2d")
+
+    function drawRect (){
+        ctx.beginPath()
+        ctx.fillRect(x, y, 50, 50)
+        ctx.closePath()
+    }
+
+    let x = 0 
+    let y = 0
+    
+    function drawElements(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        drawRect()
+        x = x + 5 
+        y = y + 5 
+
+        requestAnimationFrame(drawElements)
+    }
+
+    requestAnimationFrame(drawElements)
+
+</script>
+
+
+</body>
+</html>

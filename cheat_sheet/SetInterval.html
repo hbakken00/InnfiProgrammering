@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetInterval</title>
+</head>
+<body>
+        <button onClick="stop()">Slutt å mas!</button>
+        <div id="area"></div>
+
+        <script>
+            // lager variabel som skal tellets
+            let maseTeller = 1 
+            // lager funksjon for å printe "mamma" fra en p tagg og legge til på telleren med ++
+            function printMessage() {
+                document.getElementById("area").innerHTML += "<p>Mamma (" + maseTeller + ") </p>"
+                maseTeller++
+            }
+            // interval metode tar imot funksjonen printMessage vi lagde over, og frekvensen i millisekunder
+            const intervalID = setInterval(printMessage, 1000)
+            // funksjon for å stoppe intervallen med clearInterval() metoden som tar imot variabelen over
+            function stop() {
+                clearInterval(intervalID)
+
+            }
+            
+            
+
+        </script>
+</body>
+</html>
