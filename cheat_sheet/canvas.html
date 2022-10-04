@@ -35,13 +35,29 @@
 
     // firkanter 3 tilgjengelige  metoder
     // for å tegne de bruk metoden rect() 4 parametere, start x+y, width og heigth:
-    const rectSize = 100
-    
-    ctx.rect(650, 450, 100, 100)
+    // setter rectSize = 100 som variabel vi kan bruke i parameterne til metoden rect:
+    // oppgave 3.3 oblig 3
+    const rectSize = 300
+    // før vi bruker rect
+    ctx.fillStyle = "yellow"
+    ctx.fillRect(canvas.width - rectSize, canvas.height - rectSize, rectSize, rectSize)
+    ctx.fillStyle = "red"
+    ctx.fillRect(0, 0, 200, 200)
+    ctx.strokeRect(200, 100, 200, 350)
+
+    // sirkler tegne opp sirkelen 
+    ctx.arc(100, 400, 50, 0, 2 * Math.PI)
+    ctx.strokeStyle = "green"
+    ctx.stroke()
     ctx.fill()
+
+    // utksift til canvas
+    ctx.font = "bold 48px Arial"
+    ctx.fillStyle = "black"
+    let lives = 3
+    const livesPrint = "Liv: " + lives
+    ctx.fillText(livesPrint, 150, 150)  
     
-
-
 </script>
 
 
