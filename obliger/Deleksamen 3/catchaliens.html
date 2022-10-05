@@ -45,13 +45,13 @@
         //Gjør klar bakgrunnsbilde for spiller
         let playerLoaded = false;
         const playerImage = new Image();
-        playerImage.onload = () => { playerLoaded = true; }
+        enemyImage.onclick = playGame () = () => { playerLoaded = true; }
         playerImage.src = "img/spaceship.png"
 
         //Gjør klar bakgrunnsbilde for alien
         let enemyLoaded = false;
         const enemyImage = new Image();
-        enemyImage.onload = () => { enemyLoaded = true; }
+        enemyImage.onclick = playGame () = () => { enemyLoaded = true; }
         enemyImage.src = "img/alien.png"
 
         //Lag en funksjon som kjører i gang spillelementene
