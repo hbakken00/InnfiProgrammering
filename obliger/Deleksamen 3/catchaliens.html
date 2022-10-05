@@ -126,12 +126,9 @@
                 countdown = 0
                 playerLoaded = false
                 enemyLoaded = false
-            
 
             } 
         }
-
-
         /************************************************************** 
          OPPGAVE 2 - KOMMENTAR 3
          Forklar hva linjene i funksjonen countDownFunction() gjør
@@ -165,25 +162,21 @@
 
         // Cross-browser support for requestAnimationFrame (https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
         requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame;
-        
+   
         //Funksjon for start/restart spill
-           function playGame() {
+        function playGame() {
             //Startverdier
             let countdown = 10
             let gameOver = false
-            playerLoaded = true
-            enemyLoaded = true
+            playerLoaded = false
+            enemyLoaded = false
             //Tegne spill-elementer ved oppstart
             drawCharacters()
             renderGame()
-
-        } 
-
-       
-
+        }
         //Kjør hele spillet med playGame-funksjonen på onClick 
 
-        
+          
         
         
     </script>
