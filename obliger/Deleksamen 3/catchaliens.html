@@ -95,7 +95,7 @@
         //Funksjon som modifiserer spillerenss posisjon på spillbrettet:
         function playerMovement(speedModifier) {
             //Flytt player i riktig retning FEIL 2, ett ekstra spørsmålstegn!
-            left  ? player.x -= player.speed * (speedModifier) : null
+            left  ? player.x -= player.speed * speedModifier : null
             right ? player.x += player.speed * speedModifier : null
             up ? player.y -= player.speed * speedModifier : null
             down ? player.y += player.speed * speedModifier : null
