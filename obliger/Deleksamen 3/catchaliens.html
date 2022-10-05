@@ -14,8 +14,8 @@
     </header>
     <section>
         <canvas id="gamearea"></canvas>
+        <button id="startKnapp" onClick="playGame()">PLAY</button>
     </section>
-    <button id="startKnapp" onClick= "playGame()">PLAY</button>
     
     <p><a href="https://www.flaticon.com/free-icons/alien" title="alien icons">Alien icon created by Smashicons</a>, 
     <a href="https://www.flaticon.com/free-icons/spaceship" title="spaceship icons">Spaceship icons created by Freepik</a> - Flaticon</p>
@@ -99,7 +99,7 @@
         
         //Funksjon som modifiserer spillerenss posisjon på spillbrettet:
         function playerMovement(speedModifier) {
-            //Flytt player i riktig retning FEIL 2, ett ekstra spørsmålstegn!
+            //Flytt player i riktig retning FEIL 2, ett ekstra spørsmålstegn! + feil 5 den ene speedMofifier lå i en parantes
             left  ? player.x -= player.speed * speedModifier : null
             right ? player.x += player.speed * speedModifier : null
             up ? player.y -= player.speed * speedModifier : null
@@ -126,12 +126,17 @@
                 countdown = 0
                 playerLoaded = false
                 enemyLoaded = false
+            
+
             } 
         }
+
+
         /************************************************************** 
          OPPGAVE 2 - KOMMENTAR 3
          Forklar hva linjene i funksjonen countDownFunction() gjør
-         - countdown-- helt til hvis countdown er mindre eller er lik 0 reset countdown med clearInterval() metoden -
+         - countdown-- helt til hvis countdown er mindre eller er lik 0 reset countdown med clearInterval() metoden
+         hvis countdown er mindre eller er lik 0 settes countdown til 0 og gameover til true. -
         ***************************************************************/
 
         //Kjør funksjonen for nedtelling hver sekund (1000. milisekund)
@@ -139,10 +144,11 @@
 
         //Funksjon som tegner/fyller ut alle spill-elementene i canvas:
         function drawGameElements() {
-            // oppgave 3.1 
+            // oppgave 3.1  sette game over tekst til rødt i 60 px med Space Mono skrift
             ctx.font = "60px Space Mono"
             ctx.fillStyle = "#ff0000"
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+
             playerLoaded ? ctx.drawImage(playerImage, player.x, player.y) : null
             enemyLoaded ? ctx.drawImage(enemyImage, enemy.x, enemy.y) : null
             gameOver ? ctx.fillText("GAME OVER!", 200, 200) : null
@@ -152,7 +158,7 @@
 
         //Funksjon som kjører spillet FEIL 3 Feilstavelse i function
         function renderGame() {
-            playerMovement(2) // oppgave 3.4 kan endre på hatigheten her hvis vi sender med en verdi som parameter
+            playerMovement(5) // oppgave 3.4 kan endre på hatigheten her hvis vi sender med en verdi som parameter
             drawGameElements()
             requestAnimationFrame(renderGame)
         }
@@ -161,24 +167,24 @@
         requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame;
         
         //Funksjon for start/restart spill
-        function playGame() {
+           function playGame() {
             //Startverdier
             let countdown = 10
             let gameOver = false
-            playerLoaded = false
-            enemyLoaded = false
+            playerLoaded = true
+            enemyLoaded = true
             //Tegne spill-elementer ved oppstart
             drawCharacters()
             renderGame()
-        }
-       
-      
- 
-        
-       
-        //Kjør hele spillet med playGame-funksjonen på onClick 
-        playGame()
 
+        } 
+
+       
+
+        //Kjør hele spillet med playGame-funksjonen på onClick 
+
+        
+        
         
     </script>
 
