@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RequestAnimationFrame</title>
+    <title>Move</title>
     <style>
         body {
             background: #f3f3f3;
@@ -23,8 +23,8 @@
     <script>
         //gjøre klart canvas:
         const canvas = document.getElementById("animarea")
-        canvas.width = 600
-        canvas.height = 400
+        canvas.width = 1000
+        canvas.height = 600
         //hent kontekst
         const ctx = canvas.getContext("2d")
 
@@ -38,6 +38,38 @@
         //startpunkt for x og y i tegning av firkant
         let x = 0
         let y = 0
+        // er direction false skal ingenting flytte på seg 
+        let direction = false
+        boost = 5
+
+        // registrere knappetrykk
+        document.addEventListener ("keydown", event => {
+            if(event.key === "ArrowRight"){
+                direction = "right"
+            }
+            if(event.key === "ArrowLeft"){
+                direction = "left"
+            }
+            if(event.key === "s"){
+                boost = 5
+            } 
+   
+        })
+
+        // speed
+
+        // registrere at vi slipper opp knappene
+        
+        document.addEventListener("keyup", event => {
+            if(event.key === "ArrowRight" || event.key === "ArrowLeft"){
+                direction = false;
+            } 
+            if (event.key === "s") {
+                boost = 1
+            }
+            
+        })
+        
         
         //samlefunksjon for å tømme canvas og tegne opp elementer
         function drawElements() {
@@ -46,14 +78,26 @@
             //tegn firkant
             drawRect()
             //oppdater posisjon til neste tegning
-            /*  x = x + 1
-            y = y + 1 */   
+         /*   x = x + 1
+            y = y + 1 */
+            if (direction === "right"){x = x + boost}
+
+            if (direction === "left") {x = x - 1}
+            
+            
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
         }
 
+    
+
+
+
+
+
         //kjør requestAnimationFrame første gang ved innlasting
         requestAnimationFrame(drawElements)
     </script>
+
 </body>
 </html>
