@@ -44,17 +44,23 @@
         }
 
         //Funksjon som tegner fjell
-        const mountain = {
+        const mountains = []
+        
+        for(let antallFjell = 0; antallFjell < 5; antallFjell++) {
+            mountains.push({
+              
             color: "gray",
             x: canvas.width / 2 - 100,
             y: canvas.height / 2 - 40,
             width: 200,
             height: 80
-        }
-        function drawMountain() {
+        
+            })
+
+        function drawMountain(x,y,w,h) {
             ctx.beginPath()
             ctx.fillStyle = "gray"
-            ctx.fillRect(mountain.x, mountain.y, mountain.width, mountain.height)
+            ctx.fillRect(x, y, w, h)
             ctx.closePath()
         }
 
@@ -130,18 +136,18 @@
             if(down === true) {
                 y = y + boost
             }
-
+        } 
             //Kollisjonssjekk mellom grønn firkant og fjell
-            if(
+       /*     if(
                 x + hero.width > mountain.x && 
                 x < mountain.x + mountain.width && 
                 y + hero.height > mountain.y && 
                 y < mountain.y + mountain.height
-            ) {
+            ) { 
                 
                 //Hvis vi har funksjonalitet som avbryter nettleserens rendring av kode,
                 //ala alert(), vil vi måtte resette verdier (siden koden fortsetter å kjøre i bakgrunnen)
-                /*
+                
                 alert("Du kræsja!");
                 x = 0
                 y = 0
@@ -149,12 +155,30 @@
                 left = false
                 up = false
                 down = false
-                */
+                
                 console.log("Du kræsjer")
-            }
+            */        
+           
+      
+
+            let collision = false 
+
 
             //Kjører tegning av fjell:
-            drawMountain()
+         //   drawMountain()
+            mountains.map(mountain => {
+                 if(
+                    x + hero.width > mountain.x &&
+                    x < mountain.x + mountain.width &&
+                    y + hero.width > mountain.y &&
+                    y < mountain.y + mountain.height
+
+                 ) {
+                    collision = true
+                 }
+                drawMountain(mountain.x, mountain.y, mountain.width, mountain.height)
+            })
+
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
         }

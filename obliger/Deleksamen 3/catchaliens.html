@@ -14,16 +14,11 @@
     </header>
     <section>
         <canvas id="gamearea"></canvas>
-        <button id="startKnapp">PLAY</button>
  
 
     </section>
-<<<<<<< HEAD
-    <button id="startKnapp" onClick ="playGame()" >PLAY</button>
+    <button id="startKnapp" type="button" onClick ="playGame()">PLAY</button>
 
-=======
-    
->>>>>>> c0a58a51b0177ea7ee4b3d6445525fe2d539d1d2
     <p><a href="https://www.flaticon.com/free-icons/alien" title="alien icons">Alien icon created by Smashicons</a>, 
     <a href="https://www.flaticon.com/free-icons/spaceship" title="spaceship icons">Spaceship icons created by Freepik</a> - Flaticon</p>
     <aside id="history">
@@ -177,26 +172,12 @@
         btn.addEventListener("click", playGame)
 
         function loadGame () {
+            playGame()
             renderGame()
             playerLoaded = true
             enemyLoaded = true
         }
-        let btn2 = document.getElementById("loadKnapp")
-
-        btn2.addEventListener("click", loadGame)
-        
-        function clearGame () {
-             clearInterval(countdownFunction)
-
-                playerLoaded = false
-                enemyLoaded = false
-                
-        }
-
-
-        let btn3 = document.getElementById("clearKnapp")
-
-        btn3.addEventListener("click", clearGame)
+    
 
 
         //Funksjon for start/restart spill
