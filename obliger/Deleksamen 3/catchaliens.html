@@ -15,8 +15,7 @@
     <section>
         <canvas id="gamearea"></canvas>
         <button id="startKnapp">PLAY</button>
-        <button id="loadKnapp">loads</button>
-        <button id="clearKnapp">CLEAR</button>
+ 
 
     </section>
     
@@ -152,6 +151,7 @@
             playerLoaded ? ctx.drawImage(playerImage, player.x, player.y) : null
             enemyLoaded ? ctx.drawImage(enemyImage, enemy.x, enemy.y) : null
             gameOver ? ctx.fillText("GAME OVER!", 200, 200) : null
+           
             document.getElementById("time").innerHTML = countdown
             document.getElementById("points").innerHTML = aliensCaught
         }
