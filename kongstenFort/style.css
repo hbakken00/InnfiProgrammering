@@ -1,0 +1,207 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Source+Sans+Pro:wght@400;700&display=swap");
+
+body {
+    font-family: 'Source Sans Pro', serif;
+    font-size: 20px;
+    background-color: #eee
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Fjalla One', sans-serif
+}
+
+.centralize-parent {
+    position: relative
+}
+
+.centralize-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+header {
+    width: 100%;
+   
+    position: relative;
+    overflow: hidden;
+    background-image: url("/olivenlundenTO/test.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 120vh;
+    padding-bottom: 20vh;
+}
+
+header div {
+    background: rgba(71, 119, 69, 0.64);
+    max-width: 50rem;
+    padding: 2rem;
+    color: #fff;
+    text-align: left;
+    margin: 0 auto 60vh auto
+}
+
+header div h1 {
+    font-size: 3rem
+
+}
+
+header div:last-child {
+    margin-bottom: 20vh
+}
+
+nav {
+    width: 100%;
+    max-width: 65rem;
+    margin: 5rem auto 0 auto;
+    padding: 2rem;
+    background: rgba(52, 80, 51, 0.829);;
+    color: #fff;
+    position: relative;
+    z-index: 999
+}
+
+nav li {
+    margin: .5rem 0;
+    line-height: 2rem
+}
+
+nav a {
+    color: #f5e026;
+    text-decoration: none;
+    border-bottom: 1px dotted #f5e026;
+    padding: 5px
+}
+
+nav a:hover {
+    background: #fff;
+    color: #0a316d
+}
+
+.toplink {
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    background: #041225;
+    color: #fff;
+    padding: .5rem;
+    width: 2rem;
+    text-align: center;
+    color: #f5e026
+}
+
+.group {
+    width: 100%;
+    max-width: 65rem;
+    margin: 0 auto;
+    padding: 2rem 0;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #ddd;
+    position: relative
+}
+
+.group li {
+    margin: .5rem 0;
+    line-height: 2rem
+}
+
+.group a {
+    color: #104786;
+    text-decoration: none;
+    border-bottom: 1px dotted #104786;
+    padding: 5px
+}
+
+.group a:hover {
+    background: #104786;
+    color: #fff
+}
+
+.group a.toplink {
+    color: #f5e026
+}
+
+.group h2 {
+    position: sticky;
+    top: 0;
+    background: #eee;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.graf{
+    background-image: url("/olivenlundenTO/StrømprisutviklingenChart.png");
+
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+ 
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+
+/* Caption */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}

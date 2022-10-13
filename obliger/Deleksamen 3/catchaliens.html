@@ -35,7 +35,7 @@
 
         //Gjør klar spillinformasjon
         // oppgave 3.2
-        let countdown = 10
+        let countdown = 60
         let iconsize = 64
         let gameOver = false
         const player = { speed: 2 }
@@ -118,23 +118,27 @@
                 drawCharacters()
             }
         }
+       
 
         //Lag funksjon for nedtelling
         function countdownFunction() {
             countdown --
+        
             if(countdown <= 0) {
                 clearInterval(countdownFunction)
                 gameOver = true
                 countdown = 0
                 playerLoaded = false
                 enemyLoaded = false
-
+                document.getElementById("startKnapp").style.display = "block"          
             } 
-        }
+        }     
+       
+   
         /************************************************************** 
          OPPGAVE 2 - KOMMENTAR 3
          Forklar hva linjene i funksjonen countDownFunction() gjør
-         - countdown-- helt til hvis countdown er mindre eller er lik 0 reset countdown med clearInterval() metoden
+         - countdown-- helt til hvis countdown er mindre eller er lik 0 resettes countdown med clearInterval() metoden
          hvis countdown er mindre eller er lik 0 settes countdown til 0 og gameover til true. -
         ***************************************************************/
 
@@ -156,9 +160,10 @@
             document.getElementById("points").innerHTML = aliensCaught
         }
 
+
         //Funksjon som kjører spillet FEIL 3 Feilstavelse i function
         function renderGame() {
-            playerMovement(5) // oppgave 3.4 kan endre på hatigheten her hvis vi sender med en verdi som parameter
+            playerMovement(0.5) // oppgave 3.4 kan endre på hatigheten her hvis vi sender med en verdi som parameter jeg syntes det var for raskt med noe over 0.5 i verdi (beror seg på panelet og oppløsning i nettleseren)
             drawGameElements()
             requestAnimationFrame(renderGame)
         }
@@ -167,33 +172,36 @@
         requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame;
 
         
-        let btn = document.getElementById("startKnapp")
-
-        btn.addEventListener("click", playGame)
-
-        function loadGame () {
-            playGame()
+        let btn = document.getElementById("startKnapp")      // lagrer html ID "startKnapp" som er knappen til variabelen btn
+        btn.addEventListener("click", loadGame)             // eventlistner på btn med click som kjører funksjonen loadGame
+       
+        function loadGame () {                             
+            playGame()                      // legger inn playGame() og renderGame ()
             renderGame()
-            playerLoaded = true
-            enemyLoaded = true
+            gameOver = false                // setter gameOver til false        
+            playerLoaded = true             // setter enemyLoaded og playerLoaded til true
+            enemyLoaded = true              
+            document.getElementById("startKnapp").style.display = "none"   // fjerner knappen mens spillet kjører  
+            
         }
-    
-
-
+        
         //Funksjon for start/restart spill
         function playGame() {
             //Startverdier
-            let countdown = 10
-            let gameOver = false
+            countdown = 60 // fjernet let de er allerede deklarert over 
+            gameOver = false    //fjernet let de er allerede deklarert over 
             playerLoaded = false
             enemyLoaded = false
             //Tegne spill-elementer ved oppstart
             drawCharacters()
-            renderGame()
+            requestAnimationFrame(renderGame)
         }
+    
+        
+
         //Kjør hele spillet med playGame-funksjonen på onClick 
-
-
+     
+        
     </script>
 
 </body>
