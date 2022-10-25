@@ -8,7 +8,10 @@
     <link href="task5.css" rel="stylesheet" media="all">
 </head>
 <body>
-    <div id="gamearea">
+        
+        <div id="gamearea" style= "display: flex;align-items: center;justify-content: center;">
+        <canvas id="drawing"> </canvas>
+
         <section id="hud-top">
             <div id="lives"><img src="img/potions.png" /> <span id="lives-count">0</span></div>
             <div id="coins"><img src="img/coins.png" /> <span id="coins-count">0</span></div>
@@ -78,13 +81,13 @@
             {
                 weaponName: "Battleaxe",
                 weaponIcon: "battleaxe",
-                level: 0,
+                level: 10,
                 value: 20
             },
             {
                 weaponName: "Armour",
                 weaponIcon: "armour",
-                level: 1,
+                level: 10,
                 value: 25
             }
         ]
@@ -111,6 +114,151 @@
         //WS3, Oppg 6: Oppdatert points med verdi fra gameConfig-objektet og utregning via armoryPoints
         let points = (gameConfig.coins * 5) + armoryPoints
         document.getElementById("points-count").innerHTML = points
+
+
+  
+
+        // henter canvas 
+
+        const canvas = document.getElementById("drawing")
+        canvas.width = 800
+        canvas.height = 600
+        const ctx = canvas.getContext("2d")
+
+        // objekt for fiende
+        const fiende = {
+            farge:  "red",
+            x: canvas.width / 2,
+            y: canvas.height + (Math.random()),
+            width: 20,
+            height: 60
+        }
+            //Funksjon for random verdi:
+        function randomMinMax(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        const fiender = [] 
+        //Løkke som går 5 ganger, og oppretter en fiende med tilfeldige verdier hver runde løkken går
+        for(let antallFiender = 0; antallFiender < 5; antallFiender++) {
+            //Setter objektet inn i arrayen mountains
+            fiender.push({
+                color: "red",
+                x: randomMinMax(0, canvas.width),
+                y: randomMinMax(0, canvas.height),
+                width: randomMinMax(100, 400),
+                height: randomMinMax(50, 200)
+            })
+        }
+        console.log(fiender)
+        // funksjon for å tegne fiende til canvas
+        function drawFiende(x,y,w,h) {
+            ctx.beginPath()
+            ctx.fillRect(x, y, w, h)
+            ctx.fillStyle = "red"
+            ctx.lineWidth = 3
+            ctx.closePath()
+        } 
+      
+   
+        // objekt med nøkkelverdier for helten
+        const hero = {
+            farge: "green",
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            speed: 5,
+            Radius: 50,
+            width: 20,
+            height: 50
+        }
+
+        // funksjon for åp tegne sirkel til canvas flexer canvas i style over for å få cirkelen til å tegnes opp im idten av skjermen
+        function drawHero(x, y, radius) {
+            // parametere for posisjon er i objektet hero
+            let Radius = hero.Radius;
+            // tegner sirkel
+            ctx.beginPath();
+            ctx.arc(x, y, Radius, 0, 2 * Math.PI)
+            ctx.strokeStyle = hero.farge
+            ctx.lineWidth = 3
+            ctx.stroke()
+            ctx.closePath()
+            
+        } 
+
+        // variabler for å flytte på helten 
+        const heltenRadius = hero.Radius
+        let heltenX = canvas.width / 2
+        let heltenY = canvas.height - heltenRadius
+
+        // sjekke tastetrykk med eventlistner og gjør klar retningsvariabel
+
+        let direction = false
+
+        document.addEventListener("keydown", event => {
+            if(event.key === "w") {direction = "up"}
+            if(event.key === "s") {direction = "down"}
+            if(event.key === "d") {direction = "right"}
+            if(event.key === "a") {direction = "left"}
+            // teste utskrift til console 
+            console.log(direction)
+        } )
+       
+       // sjekke om fjerning av tastetrykk
+      
+        document.addEventListener("keyup", event => {
+            if (
+                event.key === "w" ||
+                event.key === "s" ||
+                event.key === "d" ||
+                event.key === "a"
+            ) {
+                direction = false
+            }
+            // teste utskrift til console 
+            console.log(direction)
+        })
+
+
+        // funksjon for å tegne sirkelen med tastetrykk tømme canvas og tegne opp elementene
+
+        function heroMovement(hastighetModifyer){
+           
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            // tegner helten med verdier for plassering
+            drawHero(heltenX, heltenY, heltenRadius)
+            // hvis direction endrer seg flytter helten seg med nøkkelen speed i objektet hero ganger modifyer parameteren vi kan sende med i kallet på funksjonen
+            direction === "up" ? heltenY -= hero.speed * hastighetModifyer : null
+            direction === "down" ? heltenY += hero.speed * hastighetModifyer : null
+            direction === "right" ? heltenX += hero.speed * hastighetModifyer : null
+            direction === "left" ? heltenX -= hero.speed * hastighetModifyer : null
+
+            // sjekke om vi finner mynter 
+           
+            // skriver fienden til canvas
+            drawFiende()
+
+          
+
+        }
+
+
+        // requestAnimationFrame for å animere
+        let animID
+        function animate() {
+
+            drawFiende()
+            heroMovement(1)
+            animID = requestAnimationFrame(animate)
+            
+        }
+  
+  
+        // kjøre opptegningen når man loader inn siden 
+             requestAnimationFrame(animate)
+
     </script>
+
+
 </body>
 </html>

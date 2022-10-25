@@ -1,0 +1,58 @@
+     
+     <!DOCTYPE html>
+     <html lang="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+     </head>
+     <body>
+        <canvas id="drawing"></canvas>
+        <script>
+
+     // henter canvas 
+
+     const canvas = document.getElementById("drawing")
+        canvas.width = 600
+        canvas.height = 400
+        const ctx = canvas.getContext("2d")
+
+        // objekt med nøkkelverdier for sirkel
+        const hero = {
+            farge: "green",
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            speed: 10,
+            Radius: 50,
+            width: 20,
+            height: 50 
+        }
+    
+        // funksjon for åp tegne sirkel til canvas
+
+function drawHero(){
+// parametere for posisjon
+let X = hero.x;
+let Y = hero.y
+let Radius = hero.Radius;
+// tegner sirkel
+ctx.beginPath();
+ctx.arc(X, Y, Radius, 0, 2 * Math.PI)
+
+ctx.strokeStyle = hero.farge
+ctx.lineWidth = 3
+ctx.stroke()
+ctx.closePath()
+}
+
+
+drawHero()
+      
+      </script>
+     </body>
+     </html>
+     
+     
+     
+     
