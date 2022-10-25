@@ -137,7 +137,11 @@
         function randomMinMax(min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min)
         }
+
+
+        const randomY = randomMinMax(0, canvas.height - 60)
         const fiender = [] 
+        
         //Løkke som går 5 ganger, og oppretter en fiende med tilfeldige verdier hver runde løkken går
         for(let antallFiender = 0; antallFiender < 5; antallFiender++) {
             //Setter objektet inn i arrayen mountains
