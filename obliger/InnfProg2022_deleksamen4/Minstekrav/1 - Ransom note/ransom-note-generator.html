@@ -19,6 +19,7 @@
 
     </section>
     <script>
+       
         //Prepare array with allowed characters
         const allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         const allowedCharactersArray = Array.from(allowedCharacters)
@@ -26,20 +27,32 @@
         //Create function to run on button click
         function makeRansom() {
             //TODO: Fetch text from textarea
-            const textInput = document.getElementById("text")
-    
+           
+            let tekstinput = document.getElementById("text").value
+        
             //TODO: Ensure correct capitalization of text string fetched
-            allowedCharacters.toUpperCase();
+            tekstinput = tekstinput.toUpperCase()
             
             //TODO: Make capitalized text string into array
-            const nyArray = allowedCharacters.split("");
+            const nyArray = tekstinput.split(" ")
 
-            console.log(nyArray)
+            console.log(tekstinput)
 
             //TODO: Prepare empty string variable for HTML
             let htmlOutput = ""
         
-            ok
+            // map av array , IF test for å sjekke om bokstavene i arrayen fra nyArray er lov(a-z && 0-9), hvis det stemmer,legg html for bilde inn i variabelen htmlOutput
+            nyArray.map(ch => { 
+            if  (tekstinput.value.match(/^[a-z0-9_.,'"!?;:& ]+$/i)) {
+                console.log('English')
+                htmlOutput  =   ` <span> <img src="images/a.png"/> </span> `
+               } else { 
+                console.log('Not English')
+                htmlOutput  =   ` <span> ${ch}</span> `
+               }
+             
+             
+        })
             /* TODO:
              * 1) Go through array of characters
              * 2) Check if capitalized array character is allowed:
@@ -57,6 +70,7 @@
 
             
         }
+
     </script>
 </body>
 </html>
