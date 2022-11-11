@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ransom Note Generator</title>
+    <link href="ransom-style.css" rel="stylesheet">
+</head>
+<body>
+    <section id="input-form">
+        <p>
+            <label for="text">Enter text to ransomize:</label>
+            <textarea id="text" name="name" rows="8"></textarea>
+        </p>
+        <button onClick="makeRansom()">Ransomize text</button>
+        <button> hei </button>
+    </section>
+    <section id="ransom-note">
+
+    </section>
+    <script>
+        //Prepare array with allowed characters
+        const allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        const allowedCharactersArray = Array.from(allowedCharacters)
+
+        //Create function to run on button click
+        function makeRansom() {
+            //TODO: Fetch text from textarea
+            const textInput = document.getElementById("text")
+
+            //TODO: Ensure correct capitalization of text string fetched
+
+
+            //TODO: Make capitalized text string into array
+             
+            
+            //TODO: Prepare empty string variable for HTML
+            let printout = "" 
+
+            const bilde = new Image();
+            bilde.src = "/images/0.png"
+            
+          
+            // går igjennom array av bokstaver 
+             allowedCharactersArray.map(
+                (bokstaver) => { printout += `<div>${bilde}</div>`}
+                                                
+                )
+        
+                document.getElementById("ransom-note").innerHTML = printout
+               
+                console.log(printout)
+            
+            
+                /* TODO:
+             * 1) Go through array of characters
+             
+             * 2) Check if capitalized array character is allowed:
+             *    If it is, put HTML for image output into variable for HTML.
+             *    If not, put the character from the array into variable for HTML.
+             * Rules to ALSO check: 
+             *    1) If character in array is a period (.), question mark (?), or exclamation mark (!),
+             *       use the end.png-file (image of exclamation mark)
+             *    2) If character is a space, insert <span class="space-separator"></span> into variabel for HTML
+             * */
+            
+
+            //TODO: Write HTML output to #ransom-note
+
+            
+        }
+    </script>
+</body>
+</html>

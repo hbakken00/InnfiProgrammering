@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 20px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 20px;
+}
+#input-form {
+    background: purple;
+    color: white;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 3px 3px rgb(49, 1, 49);
+}
+textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+button {
+    background: #f3f3f3;
+    border: 2px solid rgb(49, 1, 49);
+    color: rgb(49, 1, 49);
+    padding: 10px;
+    text-transform: uppercase;
+}
+#ransom-note {
+    flex-grow: 4;
+    background: #f3f3f3;
+    min-height: 100vh;
+    padding: 20px;
+    box-shadow: 3px 3px #ccc;
+}
+.space-separator {
+    display: inline-block;
+    width: 60px;
+    background: transparent;
+}
