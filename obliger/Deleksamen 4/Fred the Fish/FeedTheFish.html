@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed the Fish</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #EA5724;
+            --gray: #f3f3f3;
+        }
+        body {
+            background: var(--gray);
+            font-family: 'Questrial', sans-serif;
+            font-size: 18px;
+        }
+        h1 {
+            font-family: 'Henny Penny', cursive;
+            color: var(--orange);
+            font-size: 34px;
+            margin-bottom: -25px;
+        }
+        #count {
+            width: 50px;
+            text-align: center;
+            background: var(--orange);
+            display: inline-block;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        aside {
+            width: calc(100% - 640)
+        }
+        #fishtank {
+            width: 600px;
+            height: 600px;
+            background: #fff;
+            border: 3px solid #000;
+        }
+        .status-bar {
+            width: 100%;
+            display: block;
+            clear: both;
+            height: 25px;
+            background: rgb(7,111,36);
+            background: linear-gradient(270deg, rgba(7,111,36,1) 0%, rgba(207,129,16,1) 64%, rgba(185,13,13,1) 100%);
+            border-radius: 5px;
+        }
+        .fill-bar {
+            float: right;
+            display: block;
+            width: 0.1%;
+            height: 25px;
+            background: var(--gray);
+            transition: ease .4s;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            width: 100%;
+            margin: 10px auto;
+        }
+        .keyboard {
+            background: #fff;
+            border-radius: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            text-align: center;
+            padding-top: 10px;
+            font-size: 22px;
+            box-sizing: border-box;
+        }
+        .attributions {
+            text-align: center;
+            display: block;
+            clear: both;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    
+    <section id="game">
+        <aside id="instructions">
+            <h1>Fred the Fish</h1>
+            <p>has been alive for <span id="count">0</span> seconds</p>
+            <h2>Status</h2>
+            <ul id="status">
+                <li>
+                    <span class="status-text">Hunger:</span>
+                        <span id="hunger-bar" class="status-bar"><span id="hunger-bar-fill" class="fill-bar"></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="status-text">Water:</span>
+                        <span id="water-bar" class="status-bar"><span id="water-bar-fill" class="fill-bar"></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="status-text">Filth:</span>
+                        <span id="filth-bar" class="status-bar"><span id="filth-bar-fill" class="fill-bar"></span>
+                    </span>
+                </li>
+            </ul>
+            <h2>Controls</h2>
+            <ul>
+                <li><span class="keyboard">F</span> to activate food</li>
+                <li>Arrow keys to move food to the Fish</li>
+                <li><span class="keyboard">W</span> to add water</li>
+                <li><span class="keyboard">C</span> to clean with brush</li>
+            </ul>
+        </aside>
+        <canvas id="fishtank"></canvas>
+    </section>
+    <div class="attributions">
+        <a href="https://www.vecteezy.com/free-vector/cool">Fish cartoon by Cool Vectors</a>, <a href="https://www.vecteezy.com/free-vector/green">Food can by Green Vectors, <a href="https://www.vecteezy.com/free-vector/fish-bowl">Fish Bowl Vectors by Vecteezy</a></a>
+    </div>
+    
+    <script>
+        //Prepare canvas
+        const c = document.getElementById("fishtank")
+        c.width = 600
+        c.height = 600
+        const ctx = c.getContext("2d")
+
+        //game object with start values:
+        const game = {
+            fishSize: 150,
+            fishX: (c.width / 2) - (150 / 2),
+            fishY: 300,
+            foodWidth: 40,
+            foodHeight: 60,
+            waterLevel: 6,
+            dirtLevel: 11,
+            hungerLevel: 6,
+            inPlay: true,
+            foodActive: false,
+            cleanActive: false,
+            counter: 0
+        }
+
+        //TODO: RandomMinMax-function
+        
+
+        //Initial visual background
+        let backgroundReady = false
+        const background = new Image()
+        background.onload = () => { backgroundReady = true }
+        //Initial fish
+        let fishReady = false
+        const fish = new Image()
+        fish.onload = () => { fishReady = true }
+        
+
+        //Activities when game is set in play
+        if(game.inPlay) {
+            document.getElementById("status").style.display = "block"
+        }
+
+        /*****************************************************************
+         * FOOD PREPAREMENT
+         */
+        //Prepare image
+        let foodReady = false;
+        const foodImage = new Image();
+        foodImage.onload = () => { FoodReady = true }
+        foodImage.src = "img/food.png"
+        
+        //TODO: Prepare food variables
+        const food = {
+           
+        }
+        
+        //Function to draw food
+        function addFood(x,y) {
+            //TODO: draw Food-can image
+            
+        }
+        
+        /*****************************************************************
+         * BUTTON ASSIGNMENTS
+         */
+        document.addEventListener("keydown", event => {
+            //TODO: Clicking F should lead to a food being placed randomly on the upper part of the canvas
+            //through the foodActive-state
+            
+
+            //TODO: Moving food cans with arrow keys:
+            
+
+            //TODO: Clicking W to add water
+            
+
+            //TODO: Clicking B to clean with brush
+            
+
+            //Testknapp
+            if(event.key === "t") {
+                console.log(game)
+            }
+            
+        })
+
+        document.addEventListener("keyup", event => {
+            //TODO: Stop moving food when leaving keys
+            
+        })
+
+        //TODO: Function to add water when clicking W-key
+        function changeWaterLevel() {
+            
+        }
+        //TODO: Function to remove dirt when clicking B-key
+        function changeDirtLevel() {
+            
+        }
+
+        //TODO: Function to compare game levels (water, dirt, hunger) that determine fish image:
+        let smallest = 5
+        function compareLevels(water, dirt, hunger) {
+            //TODO: comparison to set smallest value:
+            
+            //return smallest number of water, hunger or dirt
+            return smallest < 1 ? 1 : smallest
+
+        }
+
+        //TODO: Timers to manipulate dirt, hunger and waterlevel:
+        function waterLevelCounter() {
+            
+        }
+        function dirtLevelCounter() {
+            
+        }
+        function hungerLevelCounter() {
+            
+        }
+
+        //Function to update status bars:
+        function updateStatusBars() {
+            const hungerLevelMax = 5
+            const dirtLevelMax = 10
+            const waterLevelMax = 5
+
+            let hungerLevelPercent = 100 - (game.hungerLevel / hungerLevelMax) * 100
+            let dirtLevelPercent = 100 - (game.dirtLevel / dirtLevelMax) * 100
+            let waterLevelPercent = 100 - (game.waterLevel / waterLevelMax) * 100
+
+            document.getElementById("hunger-bar-fill").style.width = hungerLevelPercent + "%"
+            document.getElementById("filth-bar-fill").style.width = dirtLevelPercent + "%"
+            document.getElementById("water-bar-fill").style.width = waterLevelPercent + "%"
+        }
+
+        //TODO: Timer for how long the fish is alive
+        function counter() {
+            //TODO: Count up
+           
+            //TODO: Print count
+            
+        }
+        //TODO: code necessary for counting second intervals
+        
+
+        //Animation function to draw elements
+        function drawElements() {
+            if(game.inPlay) {
+                //Everything that happens when we're ingame
+                //Set waterlevel image
+                game.waterLevel <= 0 && game.waterLevel >= 5 ? background.src = "img/background_level5.jpg" : background.src = "img/background_level" + game.waterLevel + ".jpg"
+                //TODO: print background image
+                
+
+                //TODO: Set fish image based on level (use compareLeves-function to construct filename)
+                
+                //TODO: Set fish Y-position based on waterLevel
+                
+                //TODO: Writing the fish image
+                
+
+                //TODO: Food state: Can food be added?
+                
+                
+                //TODO: Set up food movement
+                
+
+                //TODO: Prevent food from exiting canvas:
+                
+                
+                //Check if food collides with fish ("is given to")
+                if(
+                    //TODO: Collision check conditions    
+                
+                ) {
+                    //TODO: update state of food
+                    
+                    //TODO: Reset values for food-position and -speed
+                    
+                    //TODO: Update hungerlevel
+                    
+                    //document.getElementById("hunger-bar").innerHTML = game.hungerLevel
+                }
+
+                //Update levels in UI
+                updateStatusBars()
+
+                //TODO: Check if all levels reaches minimum (1) = game over = inPlay = false
+                
+            } else {
+                //TODO: Clear the board, print game over, and show fish_level1.png
+                
+            }
+            //TODO: rerun animation function
+            
+        }
+
+        //Function to start game
+        function playGame() {
+            requestAnimationFrame(drawElements)
+        }
+
+        //Run the game
+        playGame()
+        //Start counters
+        waterLevelCounter()
+        dirtLevelCounter()
+        hungerLevelCounter()
+
+    </script>
+</body>
+</html>

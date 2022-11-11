@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disco Hero</title>
+    <link href="disco.css" rel="stylesheet">
+</head>
+<body>
+    <section id="display">
+        <article>
+            <p><span id="itemsDrawn"></span> of <span id="itemsToPlay"></span> items played</p>
+            <div id="metaui">
+                <div id="level-box">
+                    Level <span id="level"></span>
+                </div>
+                <div id="lives-box">
+                    Lives <span id="misses"></span>
+                </div>
+                <div id="saved-box">
+                    Items saved <span id="hits"></span>
+                </div>
+            </div>
+            <h2>Controls:</h2>
+            <div id="controls">
+                <div id="up">&uarr;</div>
+                <div id="right">&rarr;</div>
+                <div id="down">&darr;</div>
+                <div id="left">&larr;</div>
+            </div>
+        </article>
+        <canvas id="dancearea"></canvas>
+    </section>
+
+    <script>
+        //Prepare canvas
+        const canvas = document.getElementById("dancearea")
+        canvas.width = 300
+        canvas.height = 500
+        const ctx = canvas.getContext("2d")
+
+        /* GAME CONFIG
+         * antall elementer (items) som skal tegnes
+         * antall tilgjengelige liv
+         * antall elementer spilleren har reddet
+         * tilstander for hit (kan hits oppdateres?) og miss (kan liv mistes?)
+         * min- og max-verdier for tilfeldig tidsvalg mellom tegning av elementer for level 1
+         * level (1 ved start)
+         * egenskaper for aktivt område (område hvor elementer kan reddes. tegnes i canvas)
+         */
+        const gameConfig = {
+            items: 150,
+            lives: 10,
+            hits: 0,
+            hitActive: true,
+            missActive: true,
+            activeKey: "",
+            min: 500,
+            max: 3500,
+            level: 1,
+            activeArea: {
+                x: 0,
+                y: 50,
+                w: canvas.width,
+                h: 60,
+                c: "silver"
+            },
+            gameover: false
+        }
+
+        /*
+         * Tillatte verdier for element-type. Tilsvarer tilhørende piltast som må trykkes for
+         * å redde elementet.
+         */
+        const allowedValues = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]
+        /*
+         * Forbered en array med spill-elementer. La en løkke gå like mange ganger som 
+         * spillet skal ha elementer, og sett inn et element for hver runde løkken går.
+         * Nå har spillet elementene klare til å ved tilfeldig tidsvalg flyttes inn i
+         * array som brukes for å tegne elementer og der manipuleres. 
+         */
+        const gameItems = []
+        for(let gameItemCount = 0; gameItemCount < gameConfig.items; gameItemCount++) {
+            let type = allowedValues[Math.floor(Math.random() * allowedValues.length)]
+            let randomX = canvas.width / 2
+            type === "ArrowUp" || type === "ArrowDown" ? randomX = Math.floor(Math.random() * (225 - 75 + 1) + 75) : null
+            type === "ArrowLeft" ? randomX = Math.floor(Math.random() * (100 - 0 + 1) + 0) : null
+            type === "ArrowRight" ? randomX = Math.floor(Math.random() * ((canvas.width - 40) - 200 + 1) + 200) : null
+            gameItems.push({
+                x: randomX,
+                y: canvas.height - 40,
+                w: 40,
+                h: 40,
+                t: type,
+                active: true
+            })
+        }
+
+        //gameItemsCounter: hvor mange elementer er tegnet?
+        let gameItemsCounter = 0
+        //Array med elementer som skal tegnes i spillbrettet.
+        let drawItems = []
+
+        /*
+         * Funksjon for å tilfeldig sette spill-elementer inn i tegne-array (drawItems)
+         * basert på tilfeldig valgt antall millisekunder. Min- og max-verdi for millisekunder
+         * bestemmes av nivå spillet er på.
+         */
+        function randomizeTime() {
+            /* TODO:
+             * Nivåsjekk for å øke hastigheten elementer tegnes i.
+             * Trenger betinget logikk som sjekker antall elementer tegnet.
+             * For hvert nivå, juster min, max og level
+             */
+            
+            //Lag tilfeldig tid basert på nivåets min- og max-verdi
+            var randomTime = Math.floor(Math.random() * (gameConfig.max - gameConfig.min + 1) + gameConfig.min)
+            
+            /* TODO: 
+             * Sjekk at gameItemsCounter ikke overstiger antall elementer som skal tegnes.
+             * Sett element inn i array for tegning av elementer.
+             * Oppdater gameItemsCounter.
+             * Kall randomizeTimer-funksjonen i seg selv (rekursivt) med setInterval,
+             * med parameter for tidsintervall gitt av randomTime.
+             */
+            
+        }
+
+        //TODO: Sett activeKey til riktig type-verdi når piltast trykkes ned
+        document.addEventListener("keydown", event => {
+            
+        })
+        //TODO: Tøm verdien i activeKey når piltast slippes opp 
+        document.addEventListener("keyup", event => {
+            
+        })
+
+        //Funksjon for å oppdatere UI-grensesnitt
+        function updateUI() {
+            const itemsToPlay = document.getElementById("itemsToPlay")
+            const itemsDrawn = document.getElementById("itemsDrawn")
+            const hits = document.getElementById("hits")
+            const misses = document.getElementById("misses")
+            const level = document.getElementById("level")
+            //TODO: Fyll alle HTML-elementene (ref. deklarasjoner over) med riktige verdier
+            
+            //TODO: Fargeendringer for level (se Forutsetninger.pdf)
+            
+            //TODO: Fargeendringer for liv (se Forusetninger.pdf)
+            
+        }
+
+        //Funksjon for å tegne elementer i canvas
+        function drawElements() {
+            //TODO: Tøm canvas for hver ny frame som tegnes
+            
+
+            //Aktivt område hvor brukerne må trykke piltast matchende item:
+            ctx.beginPath()
+            ctx.fillStyle = gameConfig.activeArea.c
+            ctx.fillRect(gameConfig.activeArea.x, gameConfig.activeArea.y, gameConfig.activeArea.w, gameConfig.activeArea.h)
+            ctx.fillStyle = "#555"
+            ctx.font = "16px Fira Sans"
+            ctx.fillText("Klikk riktig piltast når firkantene", 10, 75)
+            ctx.fillText("er innenfor dette feltet", 10, 95)
+            ctx.closePath()
+
+            /*
+             * Løp gjennom array for tegning av elementer.
+             * Lagre hvert element-object i en parameter item, og utfør følgende:
+             */
+            drawItems.map((item, index) => {
+                /* TODO:
+                 * Hvis elementet har tilstanden aktiv, skal det tegnes opp som en firkant.
+                 * Før det tegnes, må vi bestemme farge det skal fylles med. Dette bestemmes av elementets type.
+                 * Se Forutsetninger.pdf, alternativt CSS for "Controls" i grensesnittet.
+                 */
+                
+                
+
+                //TODO: Juster elementets verdi for vertikal bevegelse oppover
+                
+
+                /*
+                 * Kollisjonssjekk mellom item og aktivt område
+                 * Kollisjon skjer når item er vertikalt innenfor aktivt område.
+                 * Hvis kollisjon OG item er aktivt...
+                 */
+                if(
+                    //TODO: Skriv betingelse for kollisjon
+                ) {
+                    //TODO: ...og knapp med riktig item-type trykkes...
+                    
+                        //TODO: ...deaktiver element, oppdater hits og tilstander for hit og miss
+                        
+                    
+                } else {
+                    //TODO: Resett tilstander for hit og miss
+
+                }
+                /* TODO:
+                 * Sjekk om et element er på utsiden toppen av canvas.
+                 * Hvis et item går på utsiden canvas, teller det som en miss, og
+                 * man mister et liv, samtidig som elementet må deaktiveres og miss-tilstand endres.
+                 */
+                
+            })
+
+            //Dersom lives når 0, skal spillet settes i tilstanden gameover
+            if(gameConfig.lives <= 0) {
+                gameConfig.gameover = true
+            }
+
+            //Oppdater grensesnitt:
+            updateUI()
+
+            /* TODO:
+             * 1) Dersom alle elementene er tegnet opp, ingen av elementene lenger er aktive 
+             * (hint: array.some() ) og spilleren fortsatt lever, Har han vunnet spillet!
+             * Da skal det skrives ut en melding i grønt til brukeren med antall elementer
+             * han reddet (Eksempel: "You won! 143/150 items saved!")
+             * 
+             * 2) Ellers; hvis spillets tilstand er satt til gameover, skal vi skrive ut
+             * "GAME OVER!" med rød stor tekst
+             * 
+             * 3) Ellers skal vi bare fortsette å kjøre drawElements med requestAnimationFrame
+             * for å fortsette spillet.
+             */
+            
+            
+        }
+
+        //Start spillet
+        drawElements()
+        randomizeTime()
+    </script>
+</body>
+</html>
