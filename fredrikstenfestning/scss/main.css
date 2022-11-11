@@ -1,0 +1,214 @@
+.wrapper {
+  min-height: 100vh;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  color: #fff;
+  position: relative;
+}
+
+section {
+  height: 100vh;
+  font-size: 40px;
+  font-weight: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+section:nth-child(2) {
+  background-image: url(/fredrikstenfestning/slides/bilde1.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 100vh;
+  padding-bottom: 20vh;
+}
+section:nth-child(3) {
+  background-image: url(/fredrikstenfestning/slides/bilde2.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 100vh;
+  padding-bottom: 20vh;
+}
+section:nth-child(4) {
+  background-image: url(/fredrikstenfestning/slides/bilde3.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 100vh;
+  padding-bottom: 20vh;
+}
+section:nth-child(5) {
+  background-image: url(/fredrikstenfestning/slides/bilde4.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 100vh;
+  padding-bottom: 20vh;
+}
+
+
+.nav__wrapper {
+  position: fixed;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+.nav {
+  margin: 0 0 100px 30px;
+  background-color: rgba(38, 41, 41, 0.616);
+}
+.nav__counter {
+  font-size: 24px;
+  transition: all 0.15s ease-out;
+}
+.nav__title {
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0 0 0.25em;
+  width: 300px;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0.3s ease-out, opacity 0.2s ease-out;
+}
+.nav__body {
+  
+  font-weight: 100;
+  font-size: 18px;
+  font-size: 18px;
+  width: 300px;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0.3s ease-out, opacity 0.2s ease-out;
+}
+.nav li {
+  
+  position: relative;
+  transition: all 0.3s ease-out;
+  margin-bottom: 1em;
+}
+.nav li:after {
+  content: "";
+  display: block;
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+  height: 250px;
+  width: 20px;
+  position: absolute;
+  left: -30px;
+  top: 15px;
+}
+.nav li a {
+  display: block;
+  padding: 0;
+  color: rgb(255, 255, 255);
+  transition: all 0.15s ease-out;
+}
+.nav li a:hover {
+  background-color: transparent;
+  padding-left: 1em;
+}
+.nav li a:focus {
+  background-color: transparent;
+}
+.nav li.active {
+  pointer-events: none;
+  padding-left: 1em;
+}
+.nav li.active:after {
+  width: 35px;
+  height: 400px;
+  top: 35px;
+}
+.nav li.active .nav__counter {
+  font-size: 48px;
+}
+.nav li.active .nav__title {
+  height: 40px;
+  opacity: 1;
+  overflow: visible;
+}
+.nav li.active .nav__body {
+  height: 100px;
+  opacity: 1;
+  overflow: visible;
+}
+
+h1 {
+  text-align: center;
+  margin: 2%;
+  padding: 2%;
+}
+
+p {
+  font-size: 25px;
+  text-align: center;
+  margin: 2%;
+  padding: 2%;
+  
+}
+
+.slider {
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  text-align: center;
+  overflow: hidden;
+}
+.image-container {
+  width: auto;
+  height: auto;
+  clear: both;
+  -webkit-transition: left 2s;
+  -moz-transition: left 2s;
+  -o-transition: left 2s;
+  transition: left 2s;
+}
+.slide {
+  margin: 0px;
+  padding: 0px;
+  
+}
+#slide-1:target ~ .image-container {
+  left: auto;
+}
+#slide-2:target ~ .image-container {
+  left: auto;
+}
+#slide-3:target ~ .image-container {
+  left: auto;
+}
+.buttons {
+  position: relative;
+  top: -20px;
+}
+.buttons a {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background-color: rgb(137, 172, 137);
+}
+
+#text-box { 
+  background-color: rgba(38, 41, 41, 0.616);
+  width: 100%;
+  max-width: 65rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #ddd;
+  position: relative;
+}

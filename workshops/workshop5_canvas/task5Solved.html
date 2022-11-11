@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Workshop 5: Canvas</title>
     <link href="task5.css" rel="stylesheet" media="all">
+    <style>
+        #gamearea-canvas {
+            background: #000;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div id="gamearea" style= "display: flex;align-items: center;justify-content: center;">
-        <canvas id="game"></canvas>
+        
         <section id="hud-top">
             <div id="lives"><img src="img/potions.png" /> <span id="lives-count">0</span></div>
             <div id="coins"><img src="img/coins.png" /> <span id="coins-count">0</span></div>
@@ -20,6 +27,7 @@
             <div id="points"><img src="img/points.png" /> <span id="points-count">0</span></div>
             <div id="level">Level: <span id="level-count">0</span></div>
         </section>
+        <canvas id="game"></canvas>
         <aside id="hud-inventory">
             <h3>Armory</h3>
             <table id="showhide">
