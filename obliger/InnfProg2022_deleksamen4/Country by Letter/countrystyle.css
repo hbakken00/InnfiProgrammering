@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
+        body {
+            color: #EBC79D;
+            background-color: #65422E;
+            background-image: url("mapbg.jpeg");
+            background-size: cover;
+            background-position: center center;
+            width: 100%;
+            min-height: 100vh;
+            font-family: 'Lora', serif;
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #game {
+            width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            background: rgba(0, 0, 0, .8);
+            padding: 20px;
+
+        }
+        #playarea {
+            width: 50%;
+        }
+        .highlight {
+            font-size: 30px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            border: 2px solid #333;
+            background: #fff;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            text-align: center;
+            display: inline-block;
+        }
+        #countryAmount {
+            border-color: #000;
+            background: #333;
+            color: #f3f3f3;
+        }
+        #countdown {
+            border-color: #6ea100;
+            color: #6ea100;
+        }
+        #chosenLetter {
+            color: #65422E;
+        }
+        input {
+            width: 80%;
+            border: 1px solid #333;
+            background: #fff;
+            font-size: 22px;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        #results {
+            margin: 10px 0;
+            border-top: 1px dashed #EBC79D;
+            border-bottom: 1px dashed #EBC79D;
+        }
+        #userGuessed {
+            background: #fff;
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #EBC79D;
+            color: #65422E;
+        }
+        #userCorrectList li::first-letter {
+            text-transform: uppercase;
+        }
+        #startgame {
+            display: none;
+        }
+        #startbutton {
+            border: 2px solid #333;
+            color: #fff;
+            background: #6ea100;
+            font-size: 26px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 600;
+            color: #EBC79D;
+            
+            --x-offset: -0.0625rem;
+            --y-offset: 0.0625rem;
+            --stroke: 0.025rem;
+            --background-color: #65422E;
+            --stroke-color: #333;
+            
+            text-shadow: 
+                
+                var(--x-offset)
+                var(--y-offset)
+                0px
+                var(--background-color), 
+                
+                calc( var(--x-offset) - var(--stroke) )
+                calc( var(--y-offset) + var(--stroke) )
+                0px
+                var(--stroke-color);
+            
+            }
+            /* for browsers that support spread, added in
+            https://drafts.csswg.org/css-text-decor-4/#text-shadow-property
+            currently: none browsers! none of them!
+            I can't even find a test: 
+            https://wpt.fyi/results/css/css-text-decor */
+            @supports ( text-shadow: 1px 1px 1px 1px black ) {
+            h1 {
+                text-shadow:
+                
+                var(--x-offset)
+                var(--y-offset)
+                0px
+                0px
+                var(--background-color), 
+                
+                var(--x-offset) 
+                var(--y-offset)
+                var(--stroke)
+                0px
+                var(--stroke-color);
+                
+            }
+        }

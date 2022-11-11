@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country by Letter</title>
+    <link href="countrystyle.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Guess countries by letter</h1>
+    <section id="game">
+        <div id="playarea">
+            <div id="info">
+                <p>Guess <span id="countryAmount" class="highlight"></span> countries starting with <span id="chosenLetter" class="highlight"></span> in the next <span id="countdown" class="highlight">90</span> seconds...</p>
+                
+            </div>
+            <div id="results">
+                <p><span id="correct">0</span>/<span id="total"></span> countries guessed</p>
+            </div>
+            <div id="userInputArea">
+                <input type="text" name="userguess" id="userguess">
+            </div>
+            <div id="startgame">
+                <p id="startmessage"></p>
+                <button id="startbutton">New game</button>
+            </div>
+        </div>
+        <div id="userGuessed">
+            <h2>Correct guesses:</h2>
+            <ol id="userCorrectList">
+
+            </ol>
+        </div>
+    </section>
+    
+    
+    <!-- Import countries as array: -->
+    <script src="countrylist.js"></script>
+    <!-- Game code: -->
+    <script>
+        /*
+         * NOTE: Countries are imported from the countrylist.js-file
+         * This give us the possibility to use variable countrylist to fetch an indexed array
+         * of all the worlds countries.
+         * The format of the list:
+         * const countryList = ["Afghanistan", "Albania", "Algeria"]
+         */
+
+        //PREPARE VARIABLES IN DOCUMENT SCOPE:
+        //Prepare input-field:
+        const inputfield = document.getElementById("userguess")
+        inputfield.focus()
+        //Prepare countdown variable:
+        let counter
+        //Selectable letters:
+        const firstLetters = "ABCEFGILMNPST"
+        //User-guessed correct countries:
+        let userCorrectGuesses = []
+        //Map array with countryList elements lowercase for easier control against user input:
+        const countries_lower
+        //Prepare array to contain countries filtered by firstletter
+        let countries = []
+        //Prepare interval id
+        let countInterval
+
+        //Function to start a game
+        function newGame() {
+            //SETS/RESETS:
+            //TODO: Set/Reset counter
+            
+            //TODO: Reset user guessed array
+            
+
+            /* TODO: 
+             * INTERFACE UPDATES
+             * Reset display list of guessed countries, game message, results and countdown timer
+             * Hide startbutton and show the inputfield, set inputfield focus
+             */
+            
+            
+            /* TODO:
+             * SINGLE GAME DEPENDENCIES
+             * Select random letter for the game, and print the letter to interface (#chosenLetter)
+             * Create array of countries filtered on the random selected letter
+             * Print total countries to info and result display in interface
+             * Start the timer
+             */
+            
+        }
+
+        
+
+        //Function for country-control when Enter is clicked
+        function checkCountry() {
+            /* TODO:
+             * Fetch the guessed country, make sure to have correct capialization
+             * If it is a country in the list, and not already guessed, 
+             * insert into guessed countries and add to list of guessed countries in interface
+             * Update input field to be ready for new user guess
+             */
+        }
+
+        //Function for printing the result:
+        function checkAndPrintResult() {
+            /* TODO: 
+             * Update interface with results.
+             * Check if all countries are found. If so, replace input with message and stop countdown
+             * */
+            
+        }
+
+        //TODO: listen for Enter-key key-press. When found, check input-country.
+        
+
+        //Countdown functionality
+        function countdown() {
+            /* TODO:
+             * Reduce counter by one (each second)
+             * Update interface display
+             * Update interface colors at 45 and 20 seconds left
+             * Stop timer when counter reaches zero, and set gameover()
+             */
+            
+        }
+        
+
+        //Game Over functionality
+        function gameover() {
+            console.log("Game over")
+            //Hide results and input, show startbutton with message including result and try-again-text
+            document.getElementById("userInputArea").style.display = "none"
+            document.getElementById("startgame").style.display = "block"
+            document.getElementById("startmessage").innerHTML = `You managed to guess ${userCorrectGuesses.length} of ${countries.length} countries! Good job. Wanna try again?`
+        }
+
+        //Initial game run on page load:
+        newGame()
+    </script>
+    
+</body>
+</html>

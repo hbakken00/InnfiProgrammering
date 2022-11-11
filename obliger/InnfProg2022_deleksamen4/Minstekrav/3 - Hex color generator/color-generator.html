@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexa decimal color generator</title>
+    <link href="hex-gen-style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Hex color generator
+        <br /><small>Click &quot;Generate&quot; to generate a three-color palette:</small></h1>
+        <button id="generate">Generate</button>    
+    </header>
+    <section id="color-palette">
+        <div id="primary-color" class="color-container">Primary color <span id="primary-color-code" class="code-container">#f3f3f3</span></div>
+        <div id="secondary-color" class="color-container">Secondary color <span id="secondary-color-code" class="code-container">#cccccc</span></div>
+        <div id="third-color" class="color-container">Tertiary color <span id="third-color-code" class="code-container">#eeeeee</span></div>
+    </section>
+
+    <script>
+        /* NOTE:
+         * A hexadecimal color code consists of three number using the hexadecimal number system.
+         * This means a hexa-decimal color code consists of a number between 0 and 255, formatted as hexa (FF to 00)
+         * for the three parameters R (red), G (green) and B (blue), 
+         * giving the format #EA6100 (R: EA, G: 61, B: 00) (<- the green button color from this css)
+         * 
+         * In this program, you need to construct an array of allowed characters, and randomly select
+         * six characters for each color from that array
+         */
+        //Allowed values, from string to array:
+        const hexValuesString = "0123456789ABCDEF"
+        //TODO: Turn string to array:
+        
+
+        //Function to activate on "generate"-button
+        function generateColors() {
+            //Set default variables for color-codes:
+            let primary = "#"
+            let secondary = "#"
+            let third = "#" 
+
+            //TODO: System/code: to construct hexa-code for primary (six allowed characters):
+            
+            //TODO: System/code to construct hexa-code for secondary (six allowed characters):
+            
+            //TODO: System/code to construct hexa-code for third (six allowed characters):
+            
+
+            //TODO: Set the random colors as background color in their respective HTML elements:
+            
+
+            //TODO: Print the color values to the respective code-containers:
+            
+        }
+
+        //TODO: Make the function run on button click
+    </script>
+</body>
+</html>
